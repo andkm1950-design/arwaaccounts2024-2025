@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apple Residency — Flat Owners Welfare Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="pre-logo">AR</div>
+    <div class="pre-bar"><div class="pre-fill"></div></div>
+    <div class="pre-text">Apple Residency</div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-emblem">AR</div>
+        <div class="nav-name">
+          <span class="nav-main">Apple Residency</span>
+          <span class="nav-sub">Welfare Association</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero"     class="nl active">Home</a></li>
+        <li><a href="#about"    class="nl">About</a></li>
+        <li><a href="#accounts" class="nl">Accounts</a></li>
+        <li><a href="#notices"  class="nl">Notices</a></li>
+        <li><a href="#contact"  class="nl">Contact</a></li>
+      </ul>
+      <a href="daybook.html" class="nav-cta" target="_blank">
+        📒 Day Book
+      </a>
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero"     class="mm-link" onclick="closeMM()">Home</a>
+    <a href="#about"    class="mm-link" onclick="closeMM()">About</a>
+    <a href="#accounts" class="mm-link" onclick="closeMM()">Accounts</a>
+    <a href="#notices"  class="mm-link" onclick="closeMM()">Notices</a>
+    <a href="#contact"  class="mm-link" onclick="closeMM()">Contact</a>
+    <a href="daybook.html" class="mm-cta" target="_blank">📒 Open Day Book</a>
+  </div>
+
+  <!-- ════════════════════════════════
+       HERO
+  ════════════════════════════════ -->
+  <section id="hero" class="hero">
+    <div class="hero-canvas">
+      <div class="hc-ring r1"></div>
+      <div class="hc-ring r2"></div>
+      <div class="hc-ring r3"></div>
+      <div class="hc-orb o1"></div>
+      <div class="hc-orb o2"></div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-chip reveal-up">✦ Chennai · Established Community</div>
+      <h1 class="hero-h1 reveal-up">
+        Apple Residency<br/>
+        <em>Welfare Association</em>
+      </h1>
+      <p class="hero-p reveal-up">
+        Transparent governance for all 34 flat owners.<br/>
+        FY 2024–25 accounts published and open to every resident.
+      </p>
+      <div class="hero-actions reveal-up">
+        <a href="daybook.html" class="btn-gold" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+          View FY 2024–25 Accounts
+        </a>
+        <a href="#accounts" class="btn-outline">See Summary ↓</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="sh-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       STATS BAND
+  ════════════════════════════════ -->
+  <section class="stats-band">
+    <div class="stats-inner">
+      <div class="stat reveal-up">
+        <div class="stat-n" data-val="34">0</div>
+        <div class="stat-l">Total Flats</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat reveal-up">
+        <div class="stat-n rupee" data-val="1500">0</div>
+        <div class="stat-l">Monthly MC / Flat</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat reveal-up">
+        <div class="stat-n rupee" data-val="98768">0</div>
+        <div class="stat-l">Closing Balance Mar 25</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat reveal-up">
+        <div class="stat-n rupee" data-val="351057">0</div>
+        <div class="stat-l">Total Collected FY 25</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       ABOUT
+  ════════════════════════════════ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="sec-eyebrow reveal-up">Who We Are</div>
+      <h2 class="sec-h2 reveal-up">About the Association</h2>
+      <div class="about-grid">
+        <div class="about-text reveal-up">
+          <p>Apple Residency Flat Owners Welfare Association manages daily operations, common area upkeep, financial accounts, and vendor relationships on behalf of all 34 flat owners.</p>
+          <p style="margin-top:14px">We publish monthly accounts and keep every rupee accounted for — because transparency builds trust in our community.</p>
+          <ul class="feature-list">
+            <li><span class="fl-dot"></span>Monthly maintenance collection &amp; day book</li>
+            <li><span class="fl-dot"></span>24/7 security — Sai Pondy Security Services</li>
+            <li><span class="fl-dot"></span>Lift, CCTV &amp; electrical maintenance</li>
+            <li><span class="fl-dot"></span>Septic tank, sump &amp; common area upkeep</li>
+            <li><span class="fl-dot"></span>Transparent financial reports every month</li>
+          </ul>
+        </div>
+        <div class="about-tiles reveal-up">
+          <div class="tile t-gold">
+            <div class="tile-ico">🏢</div>
+            <div class="tile-title">34 Flats</div>
+            <div class="tile-desc">All blocks under one association</div>
+          </div>
+          <div class="tile t-navy">
+            <div class="tile-ico">🔒</div>
+            <div class="tile-title">24 / 7 Security</div>
+            <div class="tile-desc">Sai Pondy Security on premises</div>
+          </div>
+          <div class="tile t-green">
+            <div class="tile-ico">📋</div>
+            <div class="tile-title">Open Accounts</div>
+            <div class="tile-desc">Day book published every month</div>
+          </div>
+          <div class="tile t-teal">
+            <div class="tile-ico">💧</div>
+            <div class="tile-title">Utility Mgmt</div>
+            <div class="tile-desc">EB, water sump &amp; lift managed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       ACCOUNTS SUMMARY
+       Logic: ①OPN + ②COLLECTIONS = ③TOTAL ON HAND − ④EXPENSES = ⑤CLOSING
+  ════════════════════════════════ -->
+  <section id="accounts" class="section accounts-sec">
+    <div class="container">
+      <div class="sec-eyebrow reveal-up">Financial Transparency</div>
+      <h2 class="sec-h2 reveal-up">Accounts — FY 2024–25</h2>
+      <p class="sec-sub reveal-up">
+        September 2024 to March 2025 &nbsp;·&nbsp; 34 Flats &nbsp;·&nbsp; MC ₹1,500 per flat per month
+      </p>
+
+      <!-- FORMULA LEGEND -->
+      <div class="legend reveal-up">
+        <div class="leg">
+          <span class="leg-box lb-opn"></span>
+          <span>① Opening Balance</span>
+        </div>
+        <span class="leg-op">＋</span>
+        <div class="leg">
+          <span class="leg-box lb-col"></span>
+          <span>② Collections</span>
+        </div>
+        <span class="leg-op">＝</span>
+        <div class="leg">
+          <span class="leg-box lb-hand"></span>
+          <span>③ Total on Hand</span>
+        </div>
+        <span class="leg-op">−</span>
+        <div class="leg">
+          <span class="leg-box lb-exp"></span>
+          <span>④ Expenses</span>
+        </div>
+        <span class="leg-op">＝</span>
+        <div class="leg">
+          <span class="leg-box lb-cls"></span>
+          <span>⑤ Closing Balance</span>
+        </div>
+      </div>
+
+      <div class="tbl-wrap reveal-up">
+        <table class="acc-tbl">
+          <thead>
+            <tr>
+              <th class="th-month">Month</th>
+              <th class="th-opn">① Opening<br/>Balance (₹)</th>
+              <th class="th-col">② Month<br/>Collections (₹)</th>
+              <th class="th-hand">③ Total<br/>on Hand (₹)</th>
+              <th class="th-exp">④ Month<br/>Expenses (₹)</th>
+              <th class="th-cls">⑤ Closing<br/>Balance (₹)</th>
+              <th class="th-mc">MC Status</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td class="td-month">
+                <strong>September 2024</strong>
+                <small>MC 26×₹1,500 · Lift AMC · EB adj</small>
+              </td>
+              <td class="td-opn">43,325</td>
+              <td class="td-col">48,757</td>
+              <td class="td-hand">92,082</td>
+              <td class="td-exp">14,411</td>
+              <td class="td-cls">77,671</td>
+              <td><span class="mcs warn">26/34</span></td>
+            </tr>
+
+            <tr class="alt">
+              <td class="td-month">
+                <strong>October 2024</strong>
+                <small>MC 33×₹1,500 · A1-Shahanaz bal ₹800+₹1,500+₹1,500</small>
+              </td>
+              <td class="td-opn">77,671</td>
+              <td class="td-col">53,300</td>
+              <td class="td-hand">1,30,971</td>
+              <td class="td-exp">42,077</td>
+              <td class="td-cls">88,894</td>
+              <td><span class="mcs good">33/34</span></td>
+            </tr>
+
+            <tr>
+              <td class="td-month">
+                <strong>November 2024</strong>
+                <small>MC 32×₹1,500</small>
+              </td>
+              <td class="td-opn">88,894</td>
+              <td class="td-col">49,500</td>
+              <td class="td-hand">1,38,394</td>
+              <td class="td-exp">52,470</td>
+              <td class="td-cls">85,924</td>
+              <td><span class="mcs warn">32/34</span></td>
+            </tr>
+
+            <tr class="alt">
+              <td class="td-month">
+                <strong>December 2024</strong>
+                <small>MC 32×₹1,500</small>
+              </td>
+              <td class="td-opn">85,924</td>
+              <td class="td-col">48,000</td>
+              <td class="td-hand">1,33,924</td>
+              <td class="td-exp">44,215</td>
+              <td class="td-cls">89,709</td>
+              <td><span class="mcs warn">32/34</span></td>
+            </tr>
+
+            <tr>
+              <td class="td-month">
+                <strong>January 2025</strong>
+                <small>MC 33×₹1,500 · G4-Siva Dec bal</small>
+              </td>
+              <td class="td-opn">89,709</td>
+              <td class="td-col">51,000</td>
+              <td class="td-hand">1,40,709</td>
+              <td class="td-exp">51,205</td>
+              <td class="td-cls">89,504</td>
+              <td><span class="mcs good">33/34</span></td>
+            </tr>
+
+            <tr class="alt">
+              <td class="td-month">
+                <strong>February 2025</strong>
+                <small>MC 32×₹1,500</small>
+              </td>
+              <td class="td-opn">89,504</td>
+              <td class="td-col">48,000</td>
+              <td class="td-hand">1,37,504</td>
+              <td class="td-exp">43,435</td>
+              <td class="td-cls">94,069</td>
+              <td><span class="mcs warn">32/34</span></td>
+            </tr>
+
+            <tr>
+              <td class="td-month">
+                <strong>March 2025</strong>
+                <small>MC 33×₹1,500 · G4 Feb bal · B5 parking · D2 EB</small>
+              </td>
+              <td class="td-opn">94,069</td>
+              <td class="td-col">52,500</td>
+              <td class="td-hand">1,46,569</td>
+              <td class="td-exp">47,801</td>
+              <td class="td-cls">98,768</td>
+              <td><span class="mcs good">33/34</span></td>
+            </tr>
+
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="tf-label">
+                Year Total
+                <small>Sep 2024 – Mar 25</small>
+              </td>
+              <td class="tf-opn">43,325 <small>(Aug 24 b/f)</small></td>
+              <td class="tf-col">3,51,057</td>
+              <td class="tf-hand">3,94,382</td>
+              <td class="tf-exp">2,95,614</td>
+              <td class="tf-cls">98,768</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div><!-- tbl-wrap -->
+
+      <div class="acc-cta reveal-up">
+        <p>Opening ₹43,325 + Collections ₹3,51,057 = Total on Hand ₹3,94,382 − Expenses ₹2,95,614 = Closing <strong>₹98,768</strong></p>
+        <a href="daybook.html" class="btn-gold" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+          Open Full Day Book
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       NOTICES
+  ════════════════════════════════ -->
+  <section id="notices" class="section notices-sec">
+    <div class="container">
+      <div class="sec-eyebrow reveal-up">Updates</div>
+      <h2 class="sec-h2 reveal-up">Notice Board</h2>
+      <div class="notices-grid">
+
+        <div class="notice reveal-up">
+          <div class="notice-top">
+            <span class="n-date">Mar 2025</span>
+            <span class="n-tag finance">Finance</span>
+          </div>
+          <h3 class="n-title">FY 2024–25 Accounts Published</h3>
+          <p class="n-body">Complete day book for Sep 2024 – Mar 2025 is now online. Closing balance: <strong>₹98,768</strong>.</p>
+          <a href="daybook.html" class="n-link" target="_blank">View Accounts →</a>
+        </div>
+
+        <div class="notice reveal-up">
+          <div class="notice-top">
+            <span class="n-date">Monthly</span>
+            <span class="n-tag maintenance">Maintenance</span>
+          </div>
+          <h3 class="n-title">MC Due by 10th Every Month</h3>
+          <p class="n-body">All flat owners please pay ₹1,500 maintenance by the 10th. G-Pay and cash accepted. Timely payment ensures smooth operations.</p>
+        </div>
+
+        <div class="notice reveal-up">
+          <div class="notice-top">
+            <span class="n-date">Oct 2024</span>
+            <span class="n-tag security">Security</span>
+          </div>
+          <h3 class="n-title">Sai Pondy Security Services Appointed</h3>
+          <p class="n-body">24/7 premises security now active. All visitors must register at the main gate. Please cooperate with security personnel.</p>
+        </div>
+
+        <div class="notice reveal-up">
+          <div class="notice-top">
+            <span class="n-date">Sep 2024</span>
+            <span class="n-tag infra">Infrastructure</span>
+          </div>
+          <h3 class="n-title">Lift Battery &amp; CCTV Upgraded</h3>
+          <p class="n-body">Lift batteries (4 Nos) replaced, CCTV adaptor &amp; new monitor installed. Water sump &amp; septic tank cleaned regularly.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       CONTACT
+  ════════════════════════════════ -->
+  <section id="contact" class="section contact-sec">
+    <div class="container">
+      <div class="sec-eyebrow reveal-up">Reach Us</div>
+      <h2 class="sec-h2 reveal-up">Contact the Association</h2>
+      <div class="contact-grid">
+
+        <div class="contact-info reveal-up">
+          <div class="ci">
+            <span class="ci-ico">📍</span>
+            <div><div class="ci-lbl">Address</div><div class="ci-val">Apple Residency, Chennai</div></div>
+          </div>
+          <div class="ci">
+            <span class="ci-ico">🏘️</span>
+            <div><div class="ci-lbl">Total Flats</div><div class="ci-val">34 Flats · All Blocks</div></div>
+          </div>
+          <div class="ci">
+            <span class="ci-ico">💳</span>
+            <div><div class="ci-lbl">MC Payment</div><div class="ci-val">₹1,500/month · Cash or G-Pay</div></div>
+          </div>
+          <div class="ci">
+            <span class="ci-ico">🔐</span>
+            <div><div class="ci-lbl">Security</div><div class="ci-val">Sai Pondy Security Services</div></div>
+          </div>
+          <div class="ci">
+            <span class="ci-ico">📒</span>
+            <div><div class="ci-lbl">Day Book</div><div class="ci-val">Published monthly — available online</div></div>
+          </div>
+        </div>
+
+        <div class="cf-box reveal-up">
+          <h3 class="cf-title">Send a Message</h3>
+          <form id="cForm" onsubmit="submitForm(event)" novalidate>
+            <div class="fg">
+              <label for="cName">Your Name</label>
+              <input type="text" id="cName" placeholder="e.g. Ramesh Kumar" required/>
+              <span class="ferr" id="errName"></span>
+            </div>
+            <div class="fg">
+              <label for="cFlat">Flat Number</label>
+              <input type="text" id="cFlat" placeholder="e.g. A3, B2, G1" required/>
+              <span class="ferr" id="errFlat"></span>
+            </div>
+            <div class="fg">
+              <label for="cMsg">Message / Query</label>
+              <textarea id="cMsg" rows="4" placeholder="Your complaint, query or suggestion..." required></textarea>
+              <span class="ferr" id="errMsg"></span>
+            </div>
+            <button type="submit" class="btn-gold cf-btn">Send Message</button>
+            <div id="cfOK" class="cf-ok" style="display:none">
+              ✅ Thank you! Your message has been recorded.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-emblem sm">AR</div>
+        <div>
+          <div class="fb-name">Apple Residency Flat Owners Welfare Association</div>
+          <div class="fb-sub">Chennai · FY 2024–25 · All figures in Indian Rupees (₹)</div>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#accounts">Accounts</a>
+        <a href="#notices">Notices</a>
+        <a href="#contact">Contact</a>
+        <a href="daybook.html" target="_blank">Day Book</a>
+      </nav>
+      <div class="footer-copy">© 2025 Apple Residency Welfare Association</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
