@@ -653,6 +653,7 @@ img { max-width: 100%; display: block; }
         <li><a href="#accounts" class="nl">Accounts</a></li>
         <li><a href="#notices"  class="nl">Notices</a></li>
         <li><a href="#contact"  class="nl">Contact</a></li>
+        <li><a href="trial_balance_FY2024-25.html" class="nl" target="_blank">Trial Balance</a></li>
       </ul>
       <a href="daybook.html" class="nav-cta" target="_blank">
         📒 Day Book
@@ -670,6 +671,8 @@ img { max-width: 100%; display: block; }
     <a href="#accounts" class="mm-link" onclick="closeMM()">Accounts</a>
     <a href="#notices"  class="mm-link" onclick="closeMM()">Notices</a>
     <a href="#contact"  class="mm-link" onclick="closeMM()">Contact</a>
+    <a href="#contact"  class="mm-link" onclick="closeMM()">Contact</a>
+    <a href="trial_balance_FY2024-25.html" class="mm-link" target="_blank">📊 Trial Balance</a>
     <a href="daybook.html" class="mm-cta" target="_blank">📒 Open Day Book</a>
   </div>
 
@@ -949,13 +952,22 @@ img { max-width: 100%; display: block; }
 
       <div class="acc-cta reveal-up">
         <p>Opening ₹43,325 + Collections ₹3,51,057 = Total on Hand ₹3,94,382 − Expenses ₹2,95,614 = Closing <strong>₹98,768</strong></p>
-        <a href="daybook.html" class="btn-gold" target="_blank">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-            <polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-          Open Full Day Book
-        </a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="daybook.html" class="btn-gold" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            Open Full Day Book
+          </a>
+          <a href="trial_balance_FY2024-25.html" class="btn-gold" target="_blank" style="background:var(--navy2);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+            View Trial Balance
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -968,6 +980,17 @@ img { max-width: 100%; display: block; }
       <div class="sec-eyebrow reveal-up">Updates</div>
       <h2 class="sec-h2 reveal-up">Notice Board</h2>
       <div class="notices-grid">
+
+
+        <div class="notice reveal-up">
+          <div class="notice-top">
+            <span class="n-date">FY 2024–25</span>
+            <span class="n-tag finance">Accounts</span>
+          </div>
+          <h3 class="n-title">Trial Balance Published</h3>
+          <p class="n-body">Complete Trial Balance for FY 2024–25 is available. Both sides balance at <strong>₹3,94,382</strong>. Closing balance: ₹98,768.</p>
+          <a href="trial_balance_FY2024-25.html" class="n-link" target="_blank">View Trial Balance →</a>
+        </div>
 
         <div class="notice reveal-up">
           <div class="notice-top">
@@ -1088,6 +1111,7 @@ img { max-width: 100%; display: block; }
         <a href="#notices">Notices</a>
         <a href="#contact">Contact</a>
         <a href="daybook.html" target="_blank">Day Book</a>
+        <a href="trial_balance_FY2024-25.html" target="_blank">Trial Balance</a>
       </nav>
       <div class="footer-copy">© 2025 Apple Residency Welfare Association</div>
     </div>

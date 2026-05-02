@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Trial Balance — Apple Residency Welfare Association FY 2024–25</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:   #0d1f3c;
+  --navy2:  #1a3560;
+  --navy3:  #e8eef8;
+  --gold:   #b8860b;
+  --gold2:  #d4a829;
+  --gold3:  #fdf3d8;
+  --green:  #155f38;
+  --green-l:#e4f4ec;
+  --red:    #991b1b;
+  --red-l:  #fef2f2;
+  --cream:  #faf8f3;
+  --border: #ddd4be;
+  --text:   #1a1208;
+  --muted:  #7a6e55;
+  --ff-s:   'Cormorant Garamond', Georgia, serif;
+  --ff-b:   'Outfit', system-ui, sans-serif;
+  --ff-m:   'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ff-b);
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* ── HEADER ── */
+.tb-header {
+  background: var(--navy);
+  padding: 36px 28px 32px;
+  position: relative; overflow: hidden;
+}
+.tb-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg,
+    transparent, transparent 40px,
+    rgba(212,168,41,.05) 40px, rgba(212,168,41,.05) 41px);
+}
+.tb-header-inner {
+  max-width: 960px; margin: 0 auto;
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.tb-logo {
+  display: flex; align-items: center; gap: 16px;
+}
+.tb-emblem {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--gold2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-s); font-size: 22px; font-weight: 700;
+  color: var(--navy); flex-shrink: 0;
+}
+.tb-org { color: #fff; }
+.tb-org-name {
+  font-family: var(--ff-s);
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: 700; line-height: 1.2;
+}
+.tb-org-sub {
+  font-size: 11px; color: rgba(255,255,255,.5);
+  letter-spacing: .08em; text-transform: uppercase;
+  margin-top: 3px;
+}
+.tb-meta { text-align: right; }
+.tb-meta-title {
+  font-family: var(--ff-s);
+  font-size: clamp(18px, 4vw, 28px);
+  font-weight: 700; color: var(--gold2);
+  line-height: 1.1;
+}
+.tb-meta-fy {
+  font-family: var(--ff-m);
+  font-size: 12px; color: rgba(255,255,255,.5);
+  margin-top: 4px; letter-spacing: .06em;
+}
+
+/* ── SUMMARY CARDS ── */
+.summary-cards {
+  max-width: 960px; margin: 28px auto 0;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+.sc {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 16px;
+  border-top: 3px solid transparent;
+  box-shadow: 0 2px 12px rgba(13,31,60,.07);
+}
+.sc.c-opn  { border-top-color: var(--navy2); }
+.sc.c-inc  { border-top-color: var(--green); }
+.sc.c-exp  { border-top-color: var(--red); }
+.sc.c-cls  { border-top-color: var(--gold2); }
+.sc-label  { font-size: 10.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.sc-value  { font-family: var(--ff-m); font-size: 20px; font-weight: 500; color: var(--navy); }
+.sc-sub    { font-size: 11px; color: var(--muted); margin-top: 5px; }
+
+/* ── FORMULA BAR ── */
+.formula-bar {
+  max-width: 960px; margin: 20px auto 0;
+  padding: 0 28px;
+}
+.formula-inner {
+  background: var(--navy2);
+  border-radius: 10px;
+  padding: 14px 20px;
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 8px 4px;
+  font-size: 13px;
+}
+.f-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.f-val  { font-family: var(--ff-m); font-size: 14px; font-weight: 500; color: var(--gold2); }
+.f-lbl  { font-size: 10px; color: rgba(255,255,255,.45); letter-spacing: .05em; text-transform: uppercase; }
+.f-op   { font-size: 20px; font-weight: 700; color: rgba(255,255,255,.3); padding: 0 8px; align-self: center; }
+
+/* ── TRIAL BALANCE TABLE ── */
+.tb-wrap {
+  max-width: 960px; margin: 28px auto 0;
+  padding: 0 28px;
+}
+.tb-section-title {
+  font-family: var(--ff-s);
+  font-size: 20px; font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.tb-section-title::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+.tb-table {
+  width: 100%; border-collapse: collapse;
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(13,31,60,.08);
+  border: 1px solid var(--border);
+  table-layout: fixed;
+}
+
+/* Column widths */
+.tb-table .col-sl   { width: 5%; }
+.tb-table .col-head { width: 50%; }
+.tb-table .col-dr   { width: 22.5%; }
+.tb-table .col-cr   { width: 22.5%; }
+
+.tb-table thead tr { background: var(--navy); }
+.tb-table thead th {
+  padding: 13px 16px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.8); text-align: right;
+}
+.tb-table thead th:nth-child(1),
+.tb-table thead th:nth-child(2) { text-align: left; }
+.tb-table thead th.dr-head { color: #fca5a5; }
+.tb-table thead th.cr-head { color: #86efac; }
+
+/* Section sub-headers */
+.tb-table tr.sec-hdr td {
+  background: var(--navy2);
+  color: #fff; font-weight: 600; font-size: 12px;
+  padding: 9px 16px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+
+/* Data rows */
+.tb-table tbody tr { border-bottom: 1px solid var(--border); }
+.tb-table tbody tr:hover { background: #f5f0e8; }
+.tb-table tbody tr.alt  { background: var(--cream); }
+.tb-table tbody td { padding: 11px 16px; font-size: 13.5px; vertical-align: middle; }
+.tb-table tbody td.sl   { color: var(--muted); font-size: 11px; font-family: var(--ff-m); text-align: center; }
+.tb-table tbody td.head { color: var(--text); font-size: 13.5px; }
+.tb-table tbody td.head small { display: block; font-size: 11px; color: var(--muted); margin-top: 2px; }
+.tb-table tbody td.dr {
+  font-family: var(--ff-m); text-align: right; white-space: nowrap;
+  color: var(--red); font-size: 13px;
+}
+.tb-table tbody td.cr {
+  font-family: var(--ff-m); text-align: right; white-space: nowrap;
+  color: var(--green); font-size: 13px; font-weight: 600;
+}
+.tb-table tbody td.empty { color: rgba(0,0,0,.15); text-align: right; font-size: 12px; }
+
+/* Opening balance row */
+.tb-table tr.opn-row td { background: var(--navy3); font-weight: 600; }
+.tb-table tr.opn-row td.head { color: var(--navy2); }
+.tb-table tr.opn-row td.cr   { color: var(--navy2); font-size: 14px; }
+
+/* Closing balance row */
+.tb-table tr.cls-row td { background: var(--gold3); font-weight: 600; }
+.tb-table tr.cls-row td.head { color: #7a5a00; }
+.tb-table tr.cls-row td.dr   { color: #7a5a00; font-size: 14px; }
+
+/* Sub-total rows */
+.tb-table tr.sub-total td {
+  background: #f0ede6;
+  font-weight: 600; font-size: 13px;
+  border-top: 1px solid var(--border);
+  color: var(--navy2);
+}
+.tb-table tr.sub-total td.dr,
+.tb-table tr.sub-total td.cr {
+  font-family: var(--ff-m); text-align: right;
+  font-size: 13px; color: var(--navy2); font-weight: 700;
+}
+
+/* Grand total row */
+.tb-table tfoot tr { background: var(--navy); }
+.tb-table tfoot td {
+  padding: 14px 16px;
+  font-weight: 700; font-family: var(--ff-m);
+  font-size: 14px; text-align: right;
+  border-top: 2px solid var(--gold2);
+}
+.tb-table tfoot td.ft-label {
+  font-family: var(--ff-b); font-size: 12px;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: #fff; text-align: left;
+}
+.tb-table tfoot td.ft-dr { color: #fca5a5; }
+.tb-table tfoot td.ft-cr { color: #86efac; }
+.tb-table tfoot td.ft-bal {
+  color: var(--gold2); font-size: 15px;
+}
+
+/* ── BALANCE CHECK ── */
+.balance-check {
+  max-width: 960px; margin: 20px auto 0;
+  padding: 0 28px;
+}
+.bc-inner {
+  background: var(--green-l);
+  border: 1px solid var(--green);
+  border-radius: 10px;
+  padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.bc-text { font-size: 14px; color: var(--green); font-weight: 600; }
+.bc-eq   { font-family: var(--ff-m); font-size: 13px; color: var(--green); }
+
+/* ── MONTH-WISE BREAKDOWN ── */
+.month-section {
+  max-width: 960px; margin: 36px auto 0;
+  padding: 0 28px;
+}
+.month-table {
+  width: 100%; border-collapse: collapse;
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(13,31,60,.07);
+  border: 1px solid var(--border);
+}
+.month-table thead tr { background: var(--navy2); }
+.month-table thead th {
+  padding: 11px 14px; font-size: 11px; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: rgba(255,255,255,.8); text-align: right;
+}
+.month-table thead th:first-child { text-align: left; }
+.month-table tbody tr { border-bottom: 1px solid var(--border); }
+.month-table tbody tr:hover { background: #f5f0e8; }
+.month-table tbody tr.alt { background: var(--cream); }
+.month-table tbody td { padding: 11px 14px; font-size: 13px; }
+.month-table tbody td.m-month { font-weight: 600; color: var(--navy); }
+.month-table tbody td.m-col   { font-family: var(--ff-m); text-align: right; color: var(--green); font-weight: 500; }
+.month-table tbody td.m-exp   { font-family: var(--ff-m); text-align: right; color: var(--red); }
+.month-table tbody td.m-opn   { font-family: var(--ff-m); text-align: right; color: var(--navy2); }
+.month-table tbody td.m-cls   { font-family: var(--ff-m); text-align: right; font-weight: 700; color: var(--navy2); }
+.month-table tbody td.m-mc    { text-align: center; }
+.month-table tfoot tr { background: var(--navy); }
+.month-table tfoot td {
+  padding: 12px 14px; font-weight: 700;
+  font-family: var(--ff-m); font-size: 13px; text-align: right; color: rgba(255,255,255,.7);
+}
+.month-table tfoot td:first-child { font-family: var(--ff-b); color: #fff; text-align: left; font-size: 12px; letter-spacing: .05em; }
+.mcs { display: inline-block; padding: 3px 9px; border-radius: 99px; font-size: 11px; font-weight: 600; font-family: var(--ff-m); }
+.mcs.good { background: var(--green-l); color: var(--green); }
+.mcs.warn { background: #fef9c3; color: #854d0e; }
+
+/* ── FOOTER ── */
+.tb-footer {
+  max-width: 960px; margin: 40px auto 0;
+  padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+  border-top: 1px solid var(--border); padding-top: 20px;
+}
+.sig-box { text-align: center; min-width: 160px; }
+.sig-line { height: 1px; background: var(--border); margin-bottom: 6px; }
+.sig-label { font-size: 11px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.footer-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 20px; }
+
+/* Print */
+@media print {
+  body { background: #fff; padding: 0; }
+  .tb-header { -webkit-print-color-adjust: exact; }
+  .tb-table thead tr, .tb-table tfoot tr { -webkit-print-color-adjust: exact; }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .summary-cards { grid-template-columns: 1fr 1fr; }
+  .formula-inner { gap: 6px; }
+  .f-op { padding: 0 4px; font-size: 16px; }
+  .tb-table .col-sl { display: none; }
+  .tb-table td.sl { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="tb-header">
+  <div class="tb-header-inner">
+    <div class="tb-logo">
+      <div class="tb-emblem">AR</div>
+      <div class="tb-org">
+        <div class="tb-org-name">Apple Residency Flat Owners<br/>Welfare Association</div>
+        <div class="tb-org-sub">Chennai · 34 Flats</div>
+      </div>
+    </div>
+    <div class="tb-meta">
+      <div class="tb-meta-title">Trial Balance</div>
+      <div class="tb-meta-fy">1 September 2024 — 31 March 2025</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY CARDS -->
+<div class="summary-cards">
+  <div class="sc c-opn">
+    <div class="sc-label">Opening Balance</div>
+    <div class="sc-value">₹43,325</div>
+    <div class="sc-sub">Aug 2024 closing b/f</div>
+  </div>
+  <div class="sc c-inc">
+    <div class="sc-label">Total Income</div>
+    <div class="sc-value">₹3,51,057</div>
+    <div class="sc-sub">Collections + other receipts</div>
+  </div>
+  <div class="sc c-exp">
+    <div class="sc-label">Total Expenditure</div>
+    <div class="sc-value">₹2,95,614</div>
+    <div class="sc-sub">All expenses 7 months</div>
+  </div>
+  <div class="sc c-cls">
+    <div class="sc-label">Closing Balance</div>
+    <div class="sc-value">₹98,768</div>
+    <div class="sc-sub">Mar 2025 · Cash in hand</div>
+  </div>
+</div>
+
+<!-- FORMULA BAR -->
+<div class="formula-bar">
+  <div class="formula-inner">
+    <div class="f-item">
+      <div class="f-val">₹43,325</div>
+      <div class="f-lbl">Opening</div>
+    </div>
+    <div class="f-op">＋</div>
+    <div class="f-item">
+      <div class="f-val">₹3,51,057</div>
+      <div class="f-lbl">Income</div>
+    </div>
+    <div class="f-op">＝</div>
+    <div class="f-item">
+      <div class="f-val">₹3,94,382</div>
+      <div class="f-lbl">Total on Hand</div>
+    </div>
+    <div class="f-op">−</div>
+    <div class="f-item">
+      <div class="f-val">₹2,95,614</div>
+      <div class="f-lbl">Expenditure</div>
+    </div>
+    <div class="f-op">＝</div>
+    <div class="f-item">
+      <div class="f-val">₹98,768</div>
+      <div class="f-lbl">Closing Balance</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRIAL BALANCE TABLE -->
+<div class="tb-wrap">
+  <div class="tb-section-title" style="margin-top:28px">Trial Balance — FY 2024–25</div>
+
+  <table class="tb-table">
+    <colgroup>
+      <col class="col-sl"/>
+      <col class="col-head"/>
+      <col class="col-dr"/>
+      <col class="col-cr"/>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Particulars</th>
+        <th class="dr-head">Debit / Expenditure (₹)</th>
+        <th class="cr-head">Credit / Income (₹)</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- OPENING BALANCE -->
+      <tr class="opn-row">
+        <td class="sl">—</td>
+        <td class="head">
+          Opening Balance (Cash in Hand)
+          <small>Brought forward from August 2024 closing</small>
+        </td>
+        <td class="empty">—</td>
+        <td class="cr">43,325.00</td>
+      </tr>
+
+      <!-- INCOME SECTION -->
+      <tr class="sec-hdr">
+        <td colspan="4">► Income / Receipts (Credit Side)</td>
+      </tr>
+
+      <tr>
+        <td class="sl">1</td>
+        <td class="head">Monthly Maintenance Collections — 7 months
+          <small>Sep 26×₹1,500 · Oct 33×₹1,500 · Nov 32×₹1,500 · Dec 32×₹1,500 · Jan 33×₹1,500 · Feb 32×₹1,500 · Mar 33×₹1,500</small>
+        </td>
+        <td class="empty">—</td>
+        <td class="cr">3,33,000.00</td>
+      </tr>
+
+      <tr class="alt">
+        <td class="sl">2</td>
+        <td class="head">Balance MC Received
+          <small>A1-Shahanaz (Sep+Oct+Nov bal) ₹3,800 · G4-Siva Dec bal ₹1,500 · G4-Siva Feb bal ₹1,500</small>
+        </td>
+        <td class="empty">—</td>
+        <td class="cr">6,800.00</td>
+      </tr>
+
+      <tr>
+        <td class="sl">3</td>
+        <td class="head">Lift AMC Receipt — A1-Shahana
+          <small>September 2024</small>
+        </td>
+        <td class="empty">—</td>
+        <td class="cr">1,200.00</td>
+      </tr>
+
+      <tr class="alt">
+        <td class="sl">4</td>
+        <td class="head">EB Charges Adjustment — Balaguru
+          <small>September 2024 · Collected &amp; paid on behalf</small>
+        </td>
+        <td class="empty">—</td>
+        <td class="cr">8,557.00</td>
+      </tr>
+
+      <tr>
+        <td class="sl">5</td>
+        <td class="head">Flat D2 — Function Extra EB Charges
+          <small>March 2025</small>
+        </td>
+        <td class="empty">—</td>
+        <td class="cr">500.00</td>
+      </tr>
+
+      <tr class="alt">
+        <td class="sl">6</td>
+        <td class="head">B5 — Car Parking Charges
+          <small>March 2025</small>
+        </td>
+        <td class="empty">—</td>
+        <td class="cr">1,000.00</td>
+      </tr>
+
+      <tr class="sub-total">
+        <td class="sl"></td>
+        <td class="head">Total Income</td>
+        <td class="dr">—</td>
+        <td class="cr">3,51,057.00</td>
+      </tr>
+
+      <!-- EXPENDITURE SECTION -->
+      <tr class="sec-hdr">
+        <td colspan="4">► Expenditure / Payments (Debit Side)</td>
+      </tr>
+
+      <tr>
+        <td class="sl">7</td>
+        <td class="head">Security Services
+          <small>Open Eye Security (Sep–Nov) · Old staff dues (Dec) · Sai Pondy Security (Dec–Mar) — 7 months</small>
+        </td>
+        <td class="dr">1,37,060.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+      <tr class="alt">
+        <td class="sl">8</td>
+        <td class="head">Common Area EB Bills
+          <small>Sep ₹8,557 · Nov ₹8,210 · Jan ₹8,620 · Mar ₹8,637</small>
+        </td>
+        <td class="dr">34,024.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+      <tr>
+        <td class="sl">9</td>
+        <td class="head">Cleaning Maid Salary
+          <small>Weekly salary across 7 months — 26 weeks × ₹600</small>
+        </td>
+        <td class="dr">15,645.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+      <tr class="alt">
+        <td class="sl">10</td>
+        <td class="head">Septic Tank &amp; Water Sump Cleaning
+          <small>Lorry charges — multiple times per month · Sump cleaning Sep · Regular monthly service</small>
+        </td>
+        <td class="dr">53,300.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+      <tr>
+        <td class="sl">11</td>
+        <td class="head">Garbage &amp; Mob Cleaning Tips
+          <small>Monthly tips to garbage collection metromen</small>
+        </td>
+        <td class="dr">4,100.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+      <tr class="alt">
+        <td class="sl">12</td>
+        <td class="head">Stationery &amp; Printing
+          <small>Stationery purchases · Xerox copies across months</small>
+        </td>
+        <td class="dr">1,195.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+      <tr>
+        <td class="sl">13</td>
+        <td class="head">Repairs &amp; Maintenance
+          <small>Lift battery · CCTV adaptor · Lift carpet · Water motor · Generator service · Ladder · Monitor · Gate grill · Landline · Fan · Electrical works</small>
+        </td>
+        <td class="dr">39,163.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+      <tr class="alt">
+        <td class="sl">14</td>
+        <td class="head">Bonus Payments — Diwali (October 2024)
+          <small>Garbage cleaners ₹500 · Cleaning maid ₹500 · Kavery water ₹500 · Security 2 persons ₹1,000</small>
+        </td>
+        <td class="dr">2,500.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+      <tr>
+        <td class="sl">15</td>
+        <td class="head">Miscellaneous Expenses
+          <small>EB lineman tips · Bushes cleaning · Diesel · Brooms · Misc petty expenses across months</small>
+        </td>
+        <td class="dr">8,627.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+      <tr class="sub-total">
+        <td class="sl"></td>
+        <td class="head">Total Expenditure</td>
+        <td class="dr">2,95,614.00</td>
+        <td class="cr">—</td>
+      </tr>
+
+      <!-- CLOSING BALANCE -->
+      <tr class="cls-row">
+        <td class="sl">—</td>
+        <td class="head">
+          Closing Balance (Cash in Hand)
+          <small>Balance carried forward — March 2025</small>
+        </td>
+        <td class="dr">98,768.00</td>
+        <td class="empty">—</td>
+      </tr>
+
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="ft-label">Grand Total (Both Sides Must Be Equal)</td>
+        <td class="ft-dr ft-bal">3,94,382.00</td>
+        <td class="ft-cr ft-bal">3,94,382.00</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<!-- BALANCE CHECK -->
+<div class="balance-check">
+  <div class="bc-inner">
+    <div class="bc-text">✅ Trial Balance — Both Sides Agree</div>
+    <div class="bc-eq">
+      Debit ₹3,94,382 &nbsp;=&nbsp; Credit ₹3,94,382
+      &nbsp;·&nbsp;
+      Difference: ₹0.00
+    </div>
+  </div>
+</div>
+
+<!-- MONTH-WISE BREAKDOWN -->
+<div class="month-section">
+  <div class="tb-section-title">Month-wise Summary</div>
+  <table class="month-table">
+    <thead>
+      <tr>
+        <th style="text-align:left">Month</th>
+        <th>Opening (₹)</th>
+        <th>Collections (₹)</th>
+        <th>Total on Hand (₹)</th>
+        <th>Expenses (₹)</th>
+        <th>Closing (₹)</th>
+        <th>MC Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="m-month">September 2024</td>
+        <td class="m-opn">43,325</td>
+        <td class="m-col">48,757</td>
+        <td class="m-col">92,082</td>
+        <td class="m-exp">14,411</td>
+        <td class="m-cls">77,671</td>
+        <td class="m-mc"><span class="mcs warn">26/34</span></td>
+      </tr>
+      <tr class="alt">
+        <td class="m-month">October 2024</td>
+        <td class="m-opn">77,671</td>
+        <td class="m-col">53,300</td>
+        <td class="m-col">1,30,971</td>
+        <td class="m-exp">42,077</td>
+        <td class="m-cls">88,894</td>
+        <td class="m-mc"><span class="mcs good">33/34</span></td>
+      </tr>
+      <tr>
+        <td class="m-month">November 2024</td>
+        <td class="m-opn">88,894</td>
+        <td class="m-col">49,500</td>
+        <td class="m-col">1,38,394</td>
+        <td class="m-exp">52,470</td>
+        <td class="m-cls">85,924</td>
+        <td class="m-mc"><span class="mcs warn">32/34</span></td>
+      </tr>
+      <tr class="alt">
+        <td class="m-month">December 2024</td>
+        <td class="m-opn">85,924</td>
+        <td class="m-col">48,000</td>
+        <td class="m-col">1,33,924</td>
+        <td class="m-exp">44,215</td>
+        <td class="m-cls">89,709</td>
+        <td class="m-mc"><span class="mcs warn">32/34</span></td>
+      </tr>
+      <tr>
+        <td class="m-month">January 2025</td>
+        <td class="m-opn">89,709</td>
+        <td class="m-col">51,000</td>
+        <td class="m-col">1,40,709</td>
+        <td class="m-exp">51,205</td>
+        <td class="m-cls">89,504</td>
+        <td class="m-mc"><span class="mcs good">33/34</span></td>
+      </tr>
+      <tr class="alt">
+        <td class="m-month">February 2025</td>
+        <td class="m-opn">89,504</td>
+        <td class="m-col">48,000</td>
+        <td class="m-col">1,37,504</td>
+        <td class="m-exp">43,435</td>
+        <td class="m-cls">94,069</td>
+        <td class="m-mc"><span class="mcs warn">32/34</span></td>
+      </tr>
+      <tr>
+        <td class="m-month">March 2025</td>
+        <td class="m-opn">94,069</td>
+        <td class="m-col">52,500</td>
+        <td class="m-col">1,46,569</td>
+        <td class="m-exp">47,801</td>
+        <td class="m-cls">98,768</td>
+        <td class="m-mc"><span class="mcs good">33/34</span></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Year Total · Sep 24 – Mar 25</td>
+        <td style="color:#c7d7f0">43,325</td>
+        <td style="color:#86efac">3,51,057</td>
+        <td style="color:var(--gold2)">3,94,382</td>
+        <td style="color:#fca5a5">2,95,614</td>
+        <td style="color:var(--gold2);font-size:15px">98,768</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<!-- SIGNATURE FOOTER -->
+<div class="tb-footer">
+  <div class="sig-box">
+    <div class="sig-line"></div>
+    <div class="sig-label">Prepared By</div>
+  </div>
+  <div class="sig-box">
+    <div class="sig-line"></div>
+    <div class="sig-label">Verified By</div>
+  </div>
+  <div class="sig-box">
+    <div class="sig-line"></div>
+    <div class="sig-label">Secretary</div>
+  </div>
+  <div class="sig-box">
+    <div class="sig-line"></div>
+    <div class="sig-label">President</div>
+  </div>
+</div>
+<div class="footer-note">
+  Apple Residency Flat Owners Welfare Association · Chennai · FY 2024–25 · All figures in Indian Rupees (₹)<br/>
+  Trial Balance prepared from Day Book entries — September 2024 to March 2025
+</div>
+
+</body>
+</html>
