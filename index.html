@@ -161,6 +161,49 @@ img { max-width: 100%; display: block; }
 }
 .nav-cta:hover { background: var(--gold2); transform: translateY(-1px); }
 
+/* ── DROPDOWN ── */
+.dropdown { position: relative; }
+.dropdown-btn {
+  font-size: 13.5px; font-weight: 500;
+  color: rgba(255,255,255,.65);
+  padding: 8px 14px; border-radius: 6px;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  transition: color .2s, background .2s;
+}
+.dropdown-btn:hover { color: var(--gold2); background: rgba(255,255,255,.06); }
+.dropdown-btn::after { content: '▾'; font-size: 11px; }
+.dropdown-menu {
+  position: absolute; top: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%);
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.35);
+  display: none; flex-direction: column;
+  overflow: hidden; z-index: 2000;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover { display: flex; }
+.dropdown-menu a {
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,.75);
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  transition: background .15s, color .15s;
+  display: flex; align-items: center; gap: 10px;
+}
+.dropdown-menu a:last-child { border-bottom: none; }
+.dropdown-menu a:hover { background: rgba(255,255,255,.08); color: var(--gold2); }
+.dropdown-menu a .dm-fy {
+  font-size: 10px; font-weight: 600;
+  background: rgba(212,168,41,.15);
+  color: var(--gold2); padding: 2px 7px;
+  border-radius: 99px; margin-left: auto;
+}
+
+
 .burger {
   display: none; flex-direction: column;
   gap: 5px; background: none; border: none; cursor: pointer;
@@ -653,7 +696,17 @@ img { max-width: 100%; display: block; }
         <li><a href="#accounts" class="nl">Accounts</a></li>
         <li><a href="#notices"  class="nl">Notices</a></li>
         <li><a href="#contact"  class="nl">Contact</a></li>
-        <li><a href="trial_balance_FY2024-25.html" class="nl" target="_blank">Trial Balance</a></li>
+        <li class="dropdown">
+          <button class="dropdown-btn">Trial Balance</button>
+          <div class="dropdown-menu">
+            <a href="trial_balance_FY2024-25.html" target="_blank">
+              📊 Trial Balance <span class="dm-fy">FY 24–25</span>
+            </a>
+            <a href="trial_balance_FY2025-26.html" target="_blank">
+              📊 Trial Balance <span class="dm-fy">FY 25–26</span>
+            </a>
+          </div>
+        </li>
         <li><a href="index_FY2025-26.html" class="nl" style="color:var(--gold2);font-weight:600" target="_blank">FY 2025–26 ★</a></li>
       </ul>
       <a href="index_FY2025-26.html" class="nav-cta" target="_blank">
@@ -673,7 +726,8 @@ img { max-width: 100%; display: block; }
     <a href="#notices"  class="mm-link" onclick="closeMM()">Notices</a>
     <a href="#contact"  class="mm-link" onclick="closeMM()">Contact</a>
     <a href="#contact"  class="mm-link" onclick="closeMM()">Contact</a>
-    <a href="trial_balance_FY2024-25.html" class="mm-link" target="_blank">📊 Trial Balance FY 24–25</a>
+    <a href="trial_balance_FY2024-25.html" class="mm-link" target="_blank">📊 Trial Balance FY 2024–25</a>
+    <a href="trial_balance_FY2025-26.html" class="mm-link" target="_blank">📊 Trial Balance FY 2025–26</a>
     <a href="daybook.html" class="mm-link" target="_blank">📒 Day Book FY 24–25</a>
     <a href="index_FY2025-26.html" class="mm-cta" target="_blank">★ FY 2025–26 Accounts</a>
   </div>
@@ -974,7 +1028,14 @@ img { max-width: 100%; display: block; }
               <rect x="3" y="3" width="18" height="18" rx="2"/>
               <path d="M3 9h18M9 21V9"/>
             </svg>
-            Trial Balance
+            Trial Balance FY 24–25
+          </a>
+          <a href="trial_balance_FY2025-26.html" class="btn-gold" target="_blank" style="background:#0e6673;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+            Trial Balance FY 25–26
           </a>
           <a href="index_FY2025-26.html" class="btn-gold" target="_blank" style="background:#155f38;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -1003,9 +1064,12 @@ img { max-width: 100%; display: block; }
             <span class="n-date">FY 2024–25</span>
             <span class="n-tag finance">Accounts</span>
           </div>
-          <h3 class="n-title">Trial Balance Published</h3>
-          <p class="n-body">Complete Trial Balance for FY 2024–25 is available. Both sides balance at <strong>₹3,94,382</strong>. Closing balance: ₹98,768.</p>
-          <a href="trial_balance_FY2024-25.html" class="n-link" target="_blank">View Trial Balance →</a>
+          <h3 class="n-title">Trial Balance — Both Years Published</h3>
+          <p class="n-body">FY 2024–25: Both sides ₹3,94,382 ✅ · FY 2025–26: Both sides ₹7,96,970 ✅</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
+            <a href="trial_balance_FY2024-25.html" class="n-link" target="_blank">FY 24–25 →</a>
+            <a href="trial_balance_FY2025-26.html" class="n-link" target="_blank" style="color:var(--teal)">FY 25–26 →</a>
+          </div>
         </div>
 
         <div class="notice reveal-up">
@@ -1127,7 +1191,8 @@ img { max-width: 100%; display: block; }
         <a href="#notices">Notices</a>
         <a href="#contact">Contact</a>
         <a href="daybook.html" target="_blank">Day Book FY 24–25</a>
-        <a href="trial_balance_FY2024-25.html" target="_blank">Trial Balance</a>
+        <a href="trial_balance_FY2024-25.html" target="_blank">Trial Balance FY 24–25</a>
+        <a href="trial_balance_FY2025-26.html" target="_blank">Trial Balance FY 25–26</a>
         <a href="index_FY2025-26.html" target="_blank">★ FY 2025–26</a>
         <a href="daybook_FY2025-26.html" target="_blank">Day Book FY 25–26</a>
       </nav>
