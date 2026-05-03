@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Apple Residency — Accounts FY 2025–26</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0d1f3c;--navy2:#1a3560;--navy3:#e8eef8;
+  --gold:#b8860b;--gold2:#d4a829;--gold3:#fdf3d8;--gold-btn:#c9933a;
+  --green:#155f38;--green-l:#e4f4ec;
+  --red:#991b1b;--red-l:#fef2f2;
+  --teal:#0e6673;--teal-l:#e0f4f7;
+  --cream:#faf8f3;--cream2:#f2ede2;
+  --border:#ddd4be;--text:#1a1208;--muted:#7a6e55;
+  --shadow:0 4px 24px rgba(13,31,60,.10);
+  --shadow-lg:0 12px 48px rgba(13,31,60,.16);
+  --radius:10px;
+  --ff-s:'Cormorant Garamond',Georgia,serif;
+  --ff-b:'Outfit',system-ui,sans-serif;
+  --ff-m:'DM Mono','Courier New',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-b);background:var(--cream);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* NAV */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent;transition:background .35s,box-shadow .35s}
+#navbar.scrolled{background:rgba(13,31,60,.97);box-shadow:0 2px 24px rgba(0,0,0,.22);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 28px;height:70px;display:flex;align-items:center;gap:16px}
+.nav-brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-emblem{width:42px;height:42px;border-radius:50%;background:var(--gold2);display:flex;align-items:center;justify-content:center;font-family:var(--ff-s);font-size:17px;font-weight:700;color:var(--navy)}
+.nav-emblem.sm{width:36px;height:36px;font-size:14px}
+.nav-name{display:flex;flex-direction:column;line-height:1.2}
+.nav-main{font-family:var(--ff-s);font-size:16px;font-weight:600;color:#fff}
+.nav-sub{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.06em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nl{font-size:13px;font-weight:500;color:rgba(255,255,255,.65);padding:7px 12px;border-radius:6px;transition:color .2s,background .2s}
+.nl:hover,.nl.active{color:var(--gold2);background:rgba(255,255,255,.06)}
+.nav-cta{margin-left:8px;flex-shrink:0;background:var(--gold-btn);color:var(--navy);font-size:13px;font-weight:600;padding:9px 16px;border-radius:8px;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:auto}
+.burger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:fixed;top:70px;left:0;right:0;z-index:999;background:rgba(13,31,60,.98);backdrop-filter:blur(12px);display:flex;flex-direction:column;padding:16px 0 24px;transform:translateY(-120%);opacity:0;transition:transform .35s,opacity .35s}
+.mobile-menu.open{transform:translateY(0);opacity:1}
+.mm-link{font-size:16px;font-weight:500;color:rgba(255,255,255,.8);padding:14px 32px;border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s}
+.mm-link:hover{color:var(--gold2)}
+.mm-cta{margin:16px 28px 0;background:var(--gold-btn);color:var(--navy);font-size:15px;font-weight:600;padding:13px 24px;border-radius:8px;text-align:center}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:100px 28px 80px}
+.hc-ring{position:absolute;border-radius:50%;border:1px solid rgba(212,168,41,.12)}
+.r1{width:600px;height:600px;top:-200px;right:-200px}
+.r2{width:900px;height:900px;top:-350px;right:-400px;border-color:rgba(212,168,41,.06)}
+.r3{width:400px;height:400px;bottom:-100px;left:-100px;border-color:rgba(212,168,41,.08)}
+.hc-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.25}
+.o1{width:350px;height:350px;top:10%;right:10%;background:#2a4a8a}
+.o2{width:250px;height:250px;bottom:15%;left:5%;background:#8a6010}
+.hero-body{position:relative;z-index:2;max-width:760px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
+.hero-chip{display:inline-block;background:rgba(212,168,41,.15);border:1px solid rgba(212,168,41,.3);color:var(--gold2);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;border-radius:99px}
+.hero-h1{font-family:var(--ff-s);font-size:clamp(36px,7vw,70px);font-weight:700;color:#fff;line-height:1.12}
+.hero-h1 em{font-style:italic;color:var(--gold2);display:block}
+.hero-p{font-size:15px;color:rgba(255,255,255,.62);line-height:1.8;max-width:520px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold-btn);color:var(--navy);font-family:var(--ff-b);font-size:14px;font-weight:600;padding:13px 22px;border-radius:8px;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 16px rgba(201,147,58,.35)}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-navy{display:inline-flex;align-items:center;gap:8px;background:var(--navy2);color:#fff;font-size:14px;font-weight:600;padding:12px 22px;border-radius:8px;border:1px solid rgba(255,255,255,.15);transition:background .2s}
+.btn-navy:hover{background:#243d75}
+.hero-scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.3);font-size:11px;letter-spacing:.1em;text-transform:uppercase;animation:float-sh 2.5s ease-in-out infinite}
+.sh-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent)}
+@keyframes float-sh{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* BANK NOTICE BANNER */
+.bank-banner{background:linear-gradient(135deg,#0a2240 0%,#1a3560 100%);border-bottom:1px solid rgba(212,168,41,.2);padding:14px 28px}
+.bank-banner-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.bank-icon{width:40px;height:40px;background:var(--gold2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.bank-text{flex:1}
+.bank-title{font-size:13px;font-weight:600;color:var(--gold2);letter-spacing:.04em}
+.bank-desc{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.bank-badges{display:flex;gap:8px;flex-wrap:wrap}
+.bank-badge{background:rgba(212,168,41,.12);border:1px solid rgba(212,168,41,.25);color:var(--gold2);font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px;letter-spacing:.04em}
+
+/* STATS BAND */
+.stats-band{background:var(--navy2);padding:36px 28px;border-bottom:1px solid rgba(255,255,255,.07)}
+.stats-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:0;justify-content:center}
+.stat{text-align:center;padding:10px 40px;flex:1;min-width:150px}
+.stat-n{font-family:var(--ff-m);font-size:clamp(22px,4vw,34px);font-weight:500;color:var(--gold2);line-height:1}
+.stat-l{font-size:11px;color:rgba(255,255,255,.45);margin-top:6px;text-transform:uppercase;letter-spacing:.07em}
+.stat-sep{width:1px;height:50px;background:rgba(255,255,255,.12);flex-shrink:0}
+
+/* SECTION */
+.section{padding:88px 28px}
+.section.accounts-sec{background:var(--cream2)}
+.section.notices-sec{background:var(--cream)}
+.section.contact-sec{background:var(--navy)}
+.container{max-width:1100px;margin:0 auto}
+.sec-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.sec-h2{font-family:var(--ff-s);font-size:clamp(26px,5vw,46px);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:14px}
+.section.contact-sec .sec-eyebrow{color:var(--gold2)}
+.section.contact-sec .sec-h2{color:#fff}
+.sec-sub{font-size:14px;color:var(--muted);max-width:620px;margin-bottom:28px;line-height:1.7}
+
+/* LEGEND */
+.legend{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:22px;background:#fff;padding:14px 20px;border-radius:var(--radius);border:1px solid var(--border);font-size:13px;color:var(--text)}
+.leg{display:flex;align-items:center;gap:8px}
+.leg-box{width:16px;height:16px;border-radius:4px;flex-shrink:0}
+.lb-opn{background:var(--navy3);border:1px solid var(--navy2)}
+.lb-col{background:#d1fae5;border:1px solid #059669}
+.lb-hand{background:var(--gold3);border:1px solid var(--gold2)}
+.lb-exp{background:var(--red-l);border:1px solid var(--red)}
+.lb-cls{background:var(--navy2)}
+.leg-op{font-weight:700;color:var(--muted);font-size:16px;padding:0 4px}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);display:block;width:100%}
+.acc-tbl{width:100%;min-width:860px;border-collapse:collapse;font-size:13px;table-layout:auto}
+.acc-tbl thead tr{background:var(--navy)}
+.acc-tbl thead th{padding:12px 14px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);text-align:right;white-space:nowrap;line-height:1.4}
+.acc-tbl thead .th-month{text-align:left}
+.acc-tbl thead .th-opn{color:#c7d7f0}
+.acc-tbl thead .th-col{color:#86efac}
+.acc-tbl thead .th-hand{color:var(--gold2)}
+.acc-tbl thead .th-exp{color:#fca5a5}
+.acc-tbl thead .th-cls{color:#fff}
+.acc-tbl thead .th-mc{color:rgba(255,255,255,.6);text-align:center}
+.acc-tbl tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+.acc-tbl tbody tr:hover{filter:brightness(.97)}
+.acc-tbl tbody tr.alt{background:var(--cream)}
+.acc-tbl tbody tr.bank-start{border-top:2px solid var(--gold2)}
+.acc-tbl tbody td{padding:11px 14px;vertical-align:middle}
+.td-month{text-align:left}
+.td-month strong{display:block;font-size:14px;font-weight:600;color:var(--navy)}
+.td-month small{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.td-month .bank-tag{display:inline-block;background:var(--gold3);border:1px solid var(--gold2);color:#7a5a00;font-size:10px;font-weight:600;padding:2px 7px;border-radius:99px;margin-top:3px;letter-spacing:.04em}
+.td-opn,.td-col,.td-hand,.td-exp,.td-cls{font-family:var(--ff-m);text-align:right;white-space:nowrap;font-size:12px}
+.td-opn{color:var(--navy2);background:var(--navy3)}
+.td-col{color:var(--green);background:var(--green-l);font-weight:600}
+.td-hand{color:#7a5a00;background:var(--gold3);font-weight:700}
+.td-exp{color:var(--red);background:var(--red-l)}
+.td-cls{color:#fff;background:var(--navy2);font-weight:700;border-radius:6px}
+.td-cls-split{text-align:right;font-family:var(--ff-m);font-size:11px}
+.td-cls-split .cash{color:var(--green);display:block}
+.td-cls-split .bank{color:var(--teal);display:block}
+.td-cls-split .total{color:#fff;background:var(--navy2);padding:2px 6px;border-radius:4px;display:inline-block;font-size:12px;font-weight:700;margin-top:3px}
+.mcs{display:inline-block;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600;font-family:var(--ff-m)}
+.mcs.good{background:var(--green-l);color:var(--green)}
+.mcs.warn{background:#fef9c3;color:#854d0e}
+.acc-tbl tfoot tr{background:var(--navy)}
+.acc-tbl tfoot td{padding:13px 14px;font-weight:700;font-family:var(--ff-m);font-size:13px;text-align:right;color:rgba(255,255,255,.7)}
+.acc-tbl tfoot .tf-label{text-align:left;font-family:var(--ff-b);font-size:12px;color:#fff}
+.acc-tbl tfoot .tf-label small{display:block;font-size:10px;color:rgba(255,255,255,.45);font-weight:400;margin-top:2px}
+.acc-tbl tfoot .tf-opn{color:#c7d7f0}
+.acc-tbl tfoot .tf-col{color:#86efac;font-size:14px}
+.acc-tbl tfoot .tf-hand{color:var(--gold2);font-size:14px}
+.acc-tbl tfoot .tf-exp{color:#fca5a5;font-size:14px}
+.acc-tbl tfoot .tf-cls{color:var(--gold2);font-size:15px}
+
+/* FORMULA BAR */
+.formula-bar{background:var(--navy2);border-radius:var(--radius);padding:14px 20px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;margin-bottom:22px;font-size:13px}
+.f-item{display:flex;flex-direction:column;align-items:center;gap:2px}
+.f-val{font-family:var(--ff-m);font-size:13px;font-weight:500;color:var(--gold2)}
+.f-lbl{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.05em;text-transform:uppercase}
+.f-op{font-size:20px;font-weight:700;color:rgba(255,255,255,.3);padding:0 6px;align-self:center}
+
+/* CLOSING BALANCE BOX */
+.closing-box{margin-top:24px;background:var(--navy2);border-radius:var(--radius);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.cb-label{color:rgba(255,255,255,.7);font-size:13px;font-weight:500}
+.cb-label strong{display:block;color:#fff;font-size:15px;margin-bottom:4px}
+.cb-amounts{display:flex;gap:24px;flex-wrap:wrap}
+.cb-item{text-align:center}
+.cb-item-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.cb-item-val{font-family:var(--ff-m);font-size:18px;font-weight:600}
+.cb-cash{color:var(--green-l)}
+.cb-bank{color:var(--teal-l)}
+.cb-total{color:var(--gold2);font-size:22px}
+
+.acc-cta{margin-top:24px;padding:22px 24px;background:#fff;border-radius:var(--radius);border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.acc-cta p{font-size:13px;color:var(--muted)}
+
+/* NOTICES */
+.notices-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:36px}
+.notice{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;gap:10px}
+.notice:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.notice-top{display:flex;align-items:center;gap:10px}
+.n-date{font-size:11px;color:var(--muted);font-family:var(--ff-m)}
+.n-tag{font-size:10px;font-weight:600;letter-spacing:.06em;padding:3px 9px;border-radius:99px;text-transform:uppercase}
+.n-tag.finance{background:var(--navy3);color:var(--navy2)}
+.n-tag.maintenance{background:var(--gold3);color:#7a5a00}
+.n-tag.security{background:var(--red-l);color:var(--red)}
+.n-tag.infra{background:var(--teal-l);color:var(--teal)}
+.n-tag.banking{background:#e8f5ee;color:var(--green)}
+.n-title{font-family:var(--ff-s);font-size:17px;font-weight:600;color:var(--navy);line-height:1.3}
+.n-body{font-size:13px;color:var(--muted);line-height:1.65;flex:1}
+.n-link{font-size:13px;font-weight:600;color:var(--gold);transition:color .2s}
+.n-link:hover{color:var(--gold2)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start;margin-top:36px}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.ci{display:flex;align-items:flex-start;gap:14px}
+.ci-ico{font-size:20px;flex-shrink:0;margin-top:2px}
+.ci-lbl{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);margin-bottom:3px}
+.ci-val{font-size:14px;font-weight:500;color:rgba(255,255,255,.85)}
+.cf-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:30px 26px}
+.cf-title{font-family:var(--ff-s);font-size:21px;color:#fff;margin-bottom:22px}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.fg label{font-size:12px;font-weight:500;color:rgba(255,255,255,.55);letter-spacing:.04em}
+.fg input,.fg textarea{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 13px;font-family:var(--ff-b);font-size:14px;color:#fff;outline:none;transition:border-color .2s;resize:vertical}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.3)}
+.fg input:focus,.fg textarea:focus{border-color:var(--gold2)}
+.fg input.error,.fg textarea.error{border-color:#f87171}
+.ferr{font-size:11px;color:#f87171;min-height:14px}
+.cf-btn{width:100%;justify-content:center;font-size:15px;padding:13px;margin-top:4px}
+.cf-ok{margin-top:12px;padding:11px 14px;background:var(--green-l);color:var(--green);border-radius:8px;font-size:13px;font-weight:500}
+
+/* FOOTER */
+.footer{background:#060f1f;padding:36px 28px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.footer-brand{display:flex;align-items:center;gap:14px}
+.fb-name{font-family:var(--ff-s);font-size:15px;color:rgba(255,255,255,.8)}
+.fb-sub{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px}
+.footer-nav{display:flex;flex-wrap:wrap;gap:4px}
+.footer-nav a{font-size:13px;color:rgba(255,255,255,.45);padding:4px 10px;border-radius:4px;transition:color .2s}
+.footer-nav a:hover{color:var(--gold2)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.25)}
+
+/* REVEAL */
+.reveal-up{opacity:1;transform:translateY(0);transition:opacity .65s ease,transform .65s ease}
+.js-ready .reveal-up{opacity:0;transform:translateY(26px)}
+.reveal-up.visible{opacity:1!important;transform:translateY(0)!important}
+
+/* FY SWITCHER */
+.fy-switcher{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);padding:6px;border-radius:30px;border:1px solid rgba(255,255,255,.15)}
+.fy-btn{font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;transition:background .2s,color .2s;cursor:pointer;border:none;background:none;color:rgba(255,255,255,.5);letter-spacing:.04em}
+.fy-btn.active{background:var(--gold-btn);color:var(--navy)}
+.fy-btn:hover:not(.active){color:var(--gold2)}
+
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.burger{display:flex}.stat{padding:10px 20px}.stat-sep{height:36px}.section{padding:60px 18px}.legend{gap:6px;font-size:11px}.leg-op{display:none}.acc-cta{flex-direction:column}}
+@media(max-width:500px){.stats-inner{flex-direction:column}.stat-sep{width:60px;height:1px}.hero-h1{font-size:34px}.acc-tbl thead th,.acc-tbl tbody td{padding:9px 9px;font-size:11px}}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-emblem">AR</div>
+      <div class="nav-name">
+        <span class="nav-main">Apple Residency</span>
+        <span class="nav-sub">Welfare Association</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" class="nl active">Home</a></li>
+      <li><a href="#accounts" class="nl">Accounts</a></li>
+      <li><a href="#notices" class="nl">Notices</a></li>
+      <li><a href="#contact" class="nl">Contact</a></li>
+      <li><a href="index.html" class="nl">← FY 24–25</a></li>
+    </ul>
+    <a href="daybook_FY2025-26.html" class="nav-cta" target="_blank">📒 Day Book FY 25–26</a>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero"     class="mm-link" onclick="closeMM()">Home</a>
+  <a href="#accounts" class="mm-link" onclick="closeMM()">Accounts</a>
+  <a href="#notices"  class="mm-link" onclick="closeMM()">Notices</a>
+  <a href="#contact"  class="mm-link" onclick="closeMM()">Contact</a>
+  <a href="index.html" class="mm-link" onclick="closeMM()">← FY 2024–25</a>
+  <a href="daybook_FY2025-26.html" class="mm-cta" target="_blank">📒 Day Book FY 25–26</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div style="position:absolute;inset:0;pointer-events:none">
+    <div class="hc-ring r1"></div><div class="hc-ring r2"></div><div class="hc-ring r3"></div>
+    <div class="hc-orb o1"></div><div class="hc-orb o2"></div>
+  </div>
+  <div class="hero-body">
+    <div class="hero-chip reveal-up">✦ Chennai · FY 2025–26 · 34 Flats</div>
+    <h1 class="hero-h1 reveal-up">
+      Apple Residency<br/>
+      <em>Accounts FY 2025–26</em>
+    </h1>
+    <p class="hero-p reveal-up">
+      Financial Year: April 2025 to March 2026<br/>
+      Indian Bank SB A/c opened October 2025 — ATM &amp; G-Pay enabled
+    </p>
+    <div class="hero-actions reveal-up">
+      <a href="daybook_FY2025-26.html" class="btn-gold" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        View Day Book FY 25–26
+      </a>
+      <a href="#accounts" class="btn-navy">See Summary ↓</a>
+      <a href="index.html" class="btn-navy">← FY 2024–25</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><div class="sh-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- BANK BANNER -->
+<div class="bank-banner">
+  <div class="bank-banner-inner">
+    <div class="bank-icon">🏦</div>
+    <div class="bank-text">
+      <div class="bank-title">Indian Bank Savings Account — Opened October 2025</div>
+      <div class="bank-desc">All online collections via GPay / UPI credited directly to Indian Bank SB A/c. Operated by the Treasurer.</div>
+    </div>
+    <div class="bank-badges">
+      <span class="bank-badge">🏧 ATM Card</span>
+      <span class="bank-badge">📱 G-Pay</span>
+      <span class="bank-badge">🔄 UPI</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAND -->
+<section class="stats-band">
+  <div class="stats-inner">
+    <div class="stat reveal-up">
+      <div class="stat-n" data-val="98768">0</div>
+      <div class="stat-l">Opening Balance Apr 25</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat reveal-up">
+      <div class="stat-n rupee" data-val="698202">0</div>
+      <div class="stat-l">Total Collected FY 26</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat reveal-up">
+      <div class="stat-n rupee" data-val="762180">0</div>
+      <div class="stat-l">Total Expenditure</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat reveal-up">
+      <div class="stat-n rupee" data-val="34790">0</div>
+      <div class="stat-l">Closing Balance Mar 26</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNTS -->
+<section id="accounts" class="section accounts-sec">
+  <div class="container">
+    <div class="sec-eyebrow reveal-up">Financial Transparency</div>
+    <h2 class="sec-h2 reveal-up">Accounts — FY 2025–26</h2>
+    <p class="sec-sub reveal-up">April 2025 to March 2026 · 34 Flats · MC ₹1,500 per flat per month<br/>
+    <strong>★ Indian Bank SB A/c opened October 2025</strong> — from Oct 2025 balances split as Cash + Bank</p>
+
+    <div class="formula-bar reveal-up">
+      <div class="f-item"><div class="f-val">₹98,768</div><div class="f-lbl">Opening</div></div>
+      <div class="f-op">＋</div>
+      <div class="f-item"><div class="f-val">₹6,98,202</div><div class="f-lbl">Collections</div></div>
+      <div class="f-op">＝</div>
+      <div class="f-item"><div class="f-val">₹7,96,970</div><div class="f-lbl">Total on Hand</div></div>
+      <div class="f-op">−</div>
+      <div class="f-item"><div class="f-val">₹7,62,180</div><div class="f-lbl">Expenditure</div></div>
+      <div class="f-op">＝</div>
+      <div class="f-item"><div class="f-val">₹34,790</div><div class="f-lbl">Closing</div></div>
+    </div>
+
+    <div class="legend reveal-up">
+      <div class="leg"><span class="leg-box lb-opn"></span><span>① Opening Balance</span></div>
+      <span class="leg-op">＋</span>
+      <div class="leg"><span class="leg-box lb-col"></span><span>② Collections</span></div>
+      <span class="leg-op">＝</span>
+      <div class="leg"><span class="leg-box lb-hand"></span><span>③ Total on Hand</span></div>
+      <span class="leg-op">−</span>
+      <div class="leg"><span class="leg-box lb-exp"></span><span>④ Expenses</span></div>
+      <span class="leg-op">＝</span>
+      <div class="leg"><span class="leg-box lb-cls"></span><span>⑤ Closing Balance</span></div>
+    </div>
+
+    <div class="tbl-wrap reveal-up">
+      <table class="acc-tbl">
+        <thead>
+          <tr>
+            <th class="th-month">Month</th>
+            <th class="th-opn">① Opening (₹)</th>
+            <th class="th-col">② Collections (₹)</th>
+            <th class="th-hand">③ Total on Hand (₹)</th>
+            <th class="th-exp">④ Expenses (₹)</th>
+            <th class="th-cls">⑤ Closing Balance (₹)</th>
+            <th class="th-mc">MC</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- CASH ONLY MONTHS -->
+          <tr>
+            <td class="td-month"><strong>April 2025</strong><small>MC 33×₹1,500 · Security Mar salary</small></td>
+            <td class="td-opn">98,768<br/><small style="color:var(--muted);font-size:10px">Cash only</small></td>
+            <td class="td-col">49,500</td><td class="td-hand">1,48,268</td>
+            <td class="td-exp">36,700</td>
+            <td class="td-cls">1,11,568</td>
+            <td><span class="mcs warn">33/34</span></td>
+          </tr>
+          <tr class="alt">
+            <td class="td-month"><strong>May 2025</strong><small>MC 33×₹1,500 · TNEB ₹9,347 · Security Apr+May</small></td>
+            <td class="td-opn">1,11,568</td>
+            <td class="td-col">49,500</td><td class="td-hand">1,61,068</td>
+            <td class="td-exp">51,397</td>
+            <td class="td-cls">1,09,671</td>
+            <td><span class="mcs warn">33/34</span></td>
+          </tr>
+          <tr>
+            <td class="td-month"><strong>June 2025</strong><small>MC 33×₹1,500 + Parking ₹500 · EC Meeting · Security Jun</small></td>
+            <td class="td-opn">1,09,671</td>
+            <td class="td-col">50,000</td><td class="td-hand">1,59,671</td>
+            <td class="td-exp">41,450</td>
+            <td class="td-cls">1,18,221</td>
+            <td><span class="mcs warn">33/34</span></td>
+          </tr>
+          <tr class="alt">
+            <td class="td-month"><strong>July 2025</strong><small>MC 32×₹1,500 · 3 septic lorries · TNEB ₹8,945</small></td>
+            <td class="td-opn">1,18,221</td>
+            <td class="td-col">48,000</td><td class="td-hand">1,66,221</td>
+            <td class="td-exp">51,345</td>
+            <td class="td-cls">1,14,876</td>
+            <td><span class="mcs warn">32/34</span></td>
+          </tr>
+          <tr>
+            <td class="td-month"><strong>August 2025</strong><small>MC Jul 33×₹1,500 + LIFT Corpus ₹9,300 · LIFT AMC ₹55,900</small></td>
+            <td class="td-opn">1,14,876</td>
+            <td class="td-col">58,800</td><td class="td-hand">1,73,676</td>
+            <td class="td-exp">1,04,165</td>
+            <td class="td-cls">69,511</td>
+            <td><span class="mcs warn">33/34</span></td>
+          </tr>
+          <tr class="alt">
+            <td class="td-month"><strong>September 2025</strong><small>FULL MC 34×₹1,500 + LIFT AMC flats · Gen-Set Roof ₹35,000</small></td>
+            <td class="td-opn">69,511</td>
+            <td class="td-col">57,000</td><td class="td-hand">1,26,511</td>
+            <td class="td-exp">1,15,282</td>
+            <td class="td-cls">11,229</td>
+            <td><span class="mcs good">34/34</span></td>
+          </tr>
+
+          <!-- BANK ACCOUNT STARTS -->
+          <tr class="bank-start">
+            <td class="td-month">
+              <strong>October 2025</strong>
+              <small>Full Oct MC + adv Nov MC + LIFT Corpus · Deepawali bonuses</small>
+              <span class="bank-tag">🏦 Indian Bank SB A/c Opened</span>
+            </td>
+            <td class="td-opn">11,229<br/><small style="color:var(--muted);font-size:10px">Cash only</small></td>
+            <td class="td-col">90,501</td><td class="td-hand">1,01,730</td>
+            <td class="td-exp">56,706</td>
+            <td class="td-cls-split">
+              <span class="cash">Cash: ₹6,200</span>
+              <span class="bank">Bank: ₹38,824</span>
+              <span class="total">₹45,024</span>
+            </td>
+            <td><span class="mcs good">34/34</span></td>
+          </tr>
+          <tr class="alt">
+            <td class="td-month"><strong>November 2025</strong><small>Full Nov MC + Corpus Fund · Chockpit drainage work ₹53,188</small></td>
+            <td class="td-opn">45,024<br/><small style="color:var(--muted);font-size:10px">Cash ₹6,200 + Bank ₹38,824</small></td>
+            <td class="td-col">96,000</td><td class="td-hand">1,41,024</td>
+            <td class="td-exp">1,05,317</td>
+            <td class="td-cls-split">
+              <span class="cash">Cash: ₹6,700</span>
+              <span class="bank">Bank: ₹29,007</span>
+              <span class="total">₹35,707</span>
+            </td>
+            <td><span class="mcs good">34/34</span></td>
+          </tr>
+          <tr>
+            <td class="td-month"><strong>December 2025</strong><small>Full Dec MC 34 flats · Bank interest ₹233 · 6 septic lorries</small></td>
+            <td class="td-opn">35,707<br/><small style="color:var(--muted);font-size:10px">Cash ₹6,700 + Bank ₹29,007</small></td>
+            <td class="td-col">52,633</td><td class="td-hand">88,340</td>
+            <td class="td-exp">52,730</td>
+            <td class="td-cls-split">
+              <span class="cash">Cash: ₹9,100</span>
+              <span class="bank">Bank: ₹26,510</span>
+              <span class="total">₹35,610</span>
+            </td>
+            <td><span class="mcs good">34/34</span></td>
+          </tr>
+          <tr class="alt">
+            <td class="td-month"><strong>January 2026</strong><small>MC 33 flats · Security Dec salary · 4 septic lorries · TNEB ₹9,988</small></td>
+            <td class="td-opn">35,610<br/><small style="color:var(--muted);font-size:10px">Cash ₹9,100 + Bank ₹26,510</small></td>
+            <td class="td-col">48,000</td><td class="td-hand">83,610</td>
+            <td class="td-exp">60,088</td>
+            <td class="td-cls-split">
+              <span class="cash">Cash: ₹4,100</span>
+              <span class="bank">Bank: ₹19,422</span>
+              <span class="total">₹23,522</span>
+            </td>
+            <td><span class="mcs warn">33/34</span></td>
+          </tr>
+          <tr>
+            <td class="td-month"><strong>February 2026</strong><small>FULL MC 34 flats · Security Jan salary · 3 septic lorries · All via GPay</small></td>
+            <td class="td-opn">23,522<br/><small style="color:var(--muted);font-size:10px">Cash ₹4,100 + Bank ₹19,422</small></td>
+            <td class="td-col">49,000</td><td class="td-hand">72,522</td>
+            <td class="td-exp">38,000</td>
+            <td class="td-cls-split">
+              <span class="cash">Cash: ₹4,100</span>
+              <span class="bank">Bank: ₹30,422</span>
+              <span class="total">₹34,522</span>
+            </td>
+            <td><span class="mcs good">34/34</span></td>
+          </tr>
+          <tr class="alt">
+            <td class="td-month"><strong>March 2026</strong><small>FULL MC 34 flats + Apr 26 adv + Bank int ₹209 · Security Feb · TNEB ₹9,812</small></td>
+            <td class="td-opn">34,522<br/><small style="color:var(--muted);font-size:10px">Cash ₹4,100 + Bank ₹30,422</small></td>
+            <td class="td-col">49,268</td><td class="td-hand">83,790</td>
+            <td class="td-exp">49,000</td>
+            <td class="td-cls-split">
+              <span class="cash">Cash: ₹4,100</span>
+              <span class="bank">Bank: ₹30,690</span>
+              <span class="total">₹34,790</span>
+            </td>
+            <td><span class="mcs good">34/34</span></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="tf-label">Year Total<small>Apr 2025 – Mar 2026</small></td>
+            <td class="tf-opn">98,768<small>(Mar 25 b/f)</small></td>
+            <td class="tf-col">6,98,202</td>
+            <td class="tf-hand">7,96,970</td>
+            <td class="tf-exp">7,62,180</td>
+            <td class="tf-cls">34,790</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- CLOSING BALANCE BOX -->
+    <div class="closing-box reveal-up">
+      <div class="cb-label">
+        <strong>Closing Balance — 31 March 2026</strong>
+        Operated by Treasurer — Indian Bank SB A/c (ATM + G-Pay)
+      </div>
+      <div class="cb-amounts">
+        <div class="cb-item">
+          <div class="cb-item-label">💵 Cash in Hand</div>
+          <div class="cb-item-val cb-cash">₹4,100</div>
+        </div>
+        <div class="cb-item">
+          <div class="cb-item-label">🏦 Indian Bank</div>
+          <div class="cb-item-val cb-bank">₹30,690</div>
+        </div>
+        <div class="cb-item">
+          <div class="cb-item-label">Total Balance</div>
+          <div class="cb-item-val cb-total">₹34,790</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acc-cta reveal-up">
+      <p>Opening ₹98,768 + Collections ₹6,98,202 = Total on Hand ₹7,96,970 − Expenses ₹7,62,180 = Closing <strong>₹34,790</strong></p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="daybook_FY2025-26.html" class="btn-gold" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open Full Day Book
+        </a>
+        <a href="index.html" class="btn-navy">← FY 2024–25</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICES -->
+<section id="notices" class="section notices-sec">
+  <div class="container">
+    <div class="sec-eyebrow reveal-up">Updates</div>
+    <h2 class="sec-h2 reveal-up">Notice Board</h2>
+    <div class="notices-grid">
+      <div class="notice reveal-up">
+        <div class="notice-top"><span class="n-date">Mar 2026</span><span class="n-tag finance">Finance</span></div>
+        <h3 class="n-title">FY 2025–26 Accounts Published</h3>
+        <p class="n-body">Complete day book for Apr 2025 – Mar 2026 now online. Closing balance: <strong>Cash ₹4,100 + Bank ₹30,690 = ₹34,790</strong>.</p>
+        <a href="daybook_FY2025-26.html" class="n-link" target="_blank">View Day Book →</a>
+      </div>
+      <div class="notice reveal-up">
+        <div class="notice-top"><span class="n-date">Oct 2025</span><span class="n-tag banking">Banking</span></div>
+        <h3 class="n-title">Indian Bank SB A/c Opened</h3>
+        <p class="n-body">New Indian Bank Savings Account opened for online collections. MC payments now accepted via GPay / UPI directly to account. Treasurer operates with ATM card.</p>
+      </div>
+      <div class="notice reveal-up">
+        <div class="notice-top"><span class="n-date">Monthly</span><span class="n-tag maintenance">Maintenance</span></div>
+        <h3 class="n-title">MC Due by 10th Every Month</h3>
+        <p class="n-body">All flat owners please pay ₹1,500 maintenance by 10th. GPay / UPI to Indian Bank A/c or cash to Treasurer. Timely payment ensures smooth operations.</p>
+      </div>
+      <div class="notice reveal-up">
+        <div class="notice-top"><span class="n-date">Nov 2025</span><span class="n-tag infra">Infrastructure</span></div>
+        <h3 class="n-title">Chockpit Drainage Work Completed</h3>
+        <p class="n-body">Major chockpit drainage work completed in November 2025. PVC pipe fittings installed. Total cost: ₹53,188. Contractor: M.Natarajan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact-sec">
+  <div class="container">
+    <div class="sec-eyebrow reveal-up">Reach Us</div>
+    <h2 class="sec-h2 reveal-up">Contact the Association</h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal-up">
+        <div class="ci"><span class="ci-ico">📍</span><div><div class="ci-lbl">Address</div><div class="ci-val">Apple Residency, Chennai</div></div></div>
+        <div class="ci"><span class="ci-ico">🏘️</span><div><div class="ci-lbl">Total Flats</div><div class="ci-val">34 Flats · All Blocks</div></div></div>
+        <div class="ci"><span class="ci-ico">💳</span><div><div class="ci-lbl">MC Payment</div><div class="ci-val">₹1,500/month · GPay / UPI / Cash</div></div></div>
+        <div class="ci"><span class="ci-ico">🏦</span><div><div class="ci-lbl">Bank Account</div><div class="ci-val">Indian Bank SB A/c (from Oct 2025)</div></div></div>
+        <div class="ci"><span class="ci-ico">📒</span><div><div class="ci-lbl">Day Book</div><div class="ci-val">Published monthly — available online</div></div></div>
+      </div>
+      <div class="cf-box reveal-up">
+        <h3 class="cf-title">Send a Message</h3>
+        <form id="cForm" onsubmit="submitForm(event)" novalidate>
+          <div class="fg"><label for="cName">Your Name</label><input type="text" id="cName" placeholder="e.g. Ramesh Kumar" required/><span class="ferr" id="errName"></span></div>
+          <div class="fg"><label for="cFlat">Flat Number</label><input type="text" id="cFlat" placeholder="e.g. A3, B2, G1" required/><span class="ferr" id="errFlat"></span></div>
+          <div class="fg"><label for="cMsg">Message / Query</label><textarea id="cMsg" rows="4" placeholder="Your complaint, query or suggestion..." required></textarea><span class="ferr" id="errMsg"></span></div>
+          <button type="submit" class="btn-gold cf-btn">Send Message</button>
+          <div id="cfOK" class="cf-ok" style="display:none">✅ Thank you! Your message has been recorded.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-emblem sm">AR</div>
+      <div><div class="fb-name">Apple Residency Flat Owners Welfare Association</div>
+      <div class="fb-sub">Chennai · FY 2025–26 · All figures in Indian Rupees (₹)</div></div>
+    </div>
+    <nav class="footer-nav">
+      <a href="index.html">FY 2024–25</a>
+      <a href="#hero">FY 2025–26 Home</a>
+      <a href="#accounts">Accounts</a>
+      <a href="#notices">Notices</a>
+      <a href="daybook_FY2025-26.html" target="_blank">Day Book 25–26</a>
+      <a href="daybook.html" target="_blank">Day Book 24–25</a>
+      <a href="trial_balance_FY2024-25.html" target="_blank">Trial Balance 24–25</a>
+    </nav>
+    <div class="footer-copy">© 2026 Apple Residency Welfare Association</div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js-ready');
+
+// PRELOADER
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const pre = document.getElementById('preloader');
+    if(pre){pre.style.opacity='0';setTimeout(()=>pre.remove(),500)}
+  }, 600);
+});
+
+// NAVBAR
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+
+// NAV ACTIVE
+document.querySelectorAll('section[id]').forEach(sec => {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        document.querySelectorAll('.nl').forEach(l => l.classList.remove('active'));
+        const a = document.querySelector(`.nl[href="#${e.target.id}"]`);
+        if(a) a.classList.add('active');
+      }
+    });
+  },{threshold:0.4}).observe(sec);
+});
+
+// BURGER
+const burger = document.getElementById('burger');
+const mm = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  const o = mm.classList.toggle('open');
+  burger.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+window.closeMM = () => { mm.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow=''; };
+window.addEventListener('resize', () => { if(window.innerWidth>768) closeMM(); });
+
+// REVEAL
+const revEls = document.querySelectorAll('.reveal-up');
+if('IntersectionObserver' in window){
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      const sibs = Array.from(e.target.parentElement.querySelectorAll('.reveal-up'));
+      setTimeout(() => e.target.classList.add('visible'), sibs.indexOf(e.target)*80);
+      ro.unobserve(e.target);
+    });
+  },{threshold:0.10,rootMargin:'0px 0px -30px 0px'});
+  revEls.forEach(el => ro.observe(el));
+} else { revEls.forEach(el => el.classList.add('visible')); }
+
+// COUNTERS
+function fmt(v, r){
+  if(!r) return v.toLocaleString('en-IN');
+  if(v>=100000) return '₹'+(v/100000).toFixed(1)+'L';
+  return '₹'+v.toLocaleString('en-IN');
+}
+function counter(el){
+  const t=parseInt(el.dataset.val,10), r=el.classList.contains('rupee');
+  el.textContent=fmt(t,r);
+  const steps=60; let cur=0; const inc=t/steps;
+  const timer=setInterval(()=>{
+    cur+=inc; if(cur>=t){cur=t;clearInterval(timer);}
+    el.textContent=fmt(Math.round(cur),r);
+  },1600/steps);
+}
+const statEls=document.querySelectorAll('.stat-n[data-val]');
+if('IntersectionObserver' in window){
+  const so=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){counter(e.target);so.unobserve(e.target);}});
+  },{threshold:0.5});
+  statEls.forEach(el=>so.observe(el));
+} else { statEls.forEach(el=>{const v=parseInt(el.dataset.val,10);el.textContent=fmt(v,el.classList.contains('rupee'));}); }
+
+// FORM
+window.submitForm = function(e){
+  e.preventDefault();
+  const nm=document.getElementById('cName'),fl=document.getElementById('cFlat'),ms=document.getElementById('cMsg');
+  const en=document.getElementById('errName'),ef=document.getElementById('errFlat'),em=document.getElementById('errMsg');
+  const ok=document.getElementById('cfOK'),btn=document.querySelector('.cf-btn');
+  [nm,fl,ms].forEach(x=>x.classList.remove('error'));
+  en.textContent=ef.textContent=em.textContent='';
+  let valid=true;
+  if(!nm.value.trim()){nm.classList.add('error');en.textContent='Please enter your name.';valid=false;}
+  if(!fl.value.trim()){fl.classList.add('error');ef.textContent='Please enter your flat number.';valid=false;}
+  if(!ms.value.trim()){ms.classList.add('error');em.textContent='Please enter your message.';valid=false;}
+  if(!valid) return;
+  btn.textContent='Sending…';btn.disabled=true;btn.style.opacity='0.7';
+  setTimeout(()=>{ok.style.display='block';btn.textContent='Send Message';btn.disabled=false;btn.style.opacity='1';document.getElementById('cForm').reset();setTimeout(()=>{ok.style.display='none';},5000);},1000);
+};
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const id=this.getAttribute('href');if(id==='#') return;
+    const t=document.querySelector(id);if(!t) return;
+    e.preventDefault();
+    window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-navbar.offsetHeight,behavior:'smooth'});
+  });
+});
+
+// TABLE ROW GLOW
+document.querySelectorAll('.acc-tbl tbody tr').forEach(row=>{
+  row.addEventListener('mouseenter',()=>row.style.boxShadow='inset 3px 0 0 var(--gold2)');
+  row.addEventListener('mouseleave',()=>row.style.boxShadow='');
+});
+</script>
+</body>
+</html>

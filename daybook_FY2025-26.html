@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Apple Residency — Day Book FY 2025–26</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0d1f3c;--navy2:#1a3560;--navy3:#e8eef8;
+  --gold:#b8860b;--gold2:#d4a829;--gold3:#fdf3d8;--gold-btn:#c9933a;
+  --green:#155f38;--green-l:#e4f4ec;
+  --red:#991b1b;--red-l:#fef2f2;
+  --teal:#0e6673;--teal-l:#e0f4f7;
+  --cream:#faf8f3;--cream2:#f2ede2;
+  --border:#ddd4be;--text:#1a1208;--muted:#7a6e55;
+  --shadow:0 2px 12px rgba(13,31,60,.08);
+  --radius:10px;
+  --ff-s:'Cormorant Garamond',Georgia,serif;
+  --ff-b:'Outfit',system-ui,sans-serif;
+  --ff-m:'DM Mono','Courier New',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-b);background:var(--cream);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+.db-header{background:var(--navy);padding:0;position:relative;overflow:hidden}
+.db-header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(212,168,41,.04) 40px,rgba(212,168,41,.04) 41px)}
+.db-header-inner{max-width:1100px;margin:0 auto;padding:28px 28px 24px;position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.db-logo{display:flex;align-items:center;gap:14px}
+.db-emblem{width:54px;height:54px;border-radius:50%;background:var(--gold2);display:flex;align-items:center;justify-content:center;font-family:var(--ff-s);font-size:20px;font-weight:700;color:var(--navy);flex-shrink:0}
+.db-org-name{font-family:var(--ff-s);font-size:clamp(14px,3vw,20px);font-weight:700;color:#fff;line-height:1.2}
+.db-org-sub{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.07em;text-transform:uppercase;margin-top:3px}
+.db-title-box{text-align:right}
+.db-title{font-family:var(--ff-s);font-size:clamp(16px,3vw,26px);font-weight:700;color:var(--gold2)}
+.db-fy{font-family:var(--ff-m);font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.06em}
+.db-back{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:12px;font-weight:500;padding:7px 14px;border-radius:6px;margin-top:10px;transition:background .2s}
+.db-back:hover{background:rgba(255,255,255,.18)}
+
+/* BANK NOTICE */
+.bank-notice{background:linear-gradient(135deg,#0a2240,#1a3560);border-bottom:1px solid rgba(212,168,41,.25);padding:12px 28px}
+.bank-notice-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:12px}
+.bn-icon{font-size:18px}
+.bn-text{color:rgba(255,255,255,.7)}
+.bn-text strong{color:var(--gold2)}
+.bn-badge{background:rgba(212,168,41,.15);border:1px solid rgba(212,168,41,.3);color:var(--gold2);font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px}
+
+/* TAB BAR */
+.tab-bar{background:var(--navy2);overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-nav{max-width:1100px;margin:0 auto;display:flex;padding:0 20px;gap:0}
+.tab-btn{font-family:var(--ff-b);font-size:12px;font-weight:500;color:rgba(255,255,255,.55);background:none;border:none;padding:13px 16px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:color .2s,border-color .2s;letter-spacing:.02em}
+.tab-btn:hover{color:var(--gold2)}
+.tab-btn.active{color:var(--gold2);border-bottom-color:var(--gold2)}
+.tab-btn.bank-tab{color:rgba(86,212,170,.6)}
+.tab-btn.bank-tab.active{color:#56d4aa;border-bottom-color:#56d4aa}
+
+/* MAIN */
+main{max-width:1100px;margin:0 auto;padding:28px 28px 60px}
+
+/* MONTH SECTION */
+.month-section{display:none}
+.month-section.active{display:block}
+
+/* MONTH HEADER */
+.month-hdr{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+.month-hdr-left h2{font-family:var(--ff-s);font-size:24px;font-weight:700;color:var(--navy)}
+.month-hdr-left .month-remarks{font-size:13px;color:var(--muted);margin-top:5px;max-width:600px}
+.month-badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.badge{font-size:11px;font-weight:600;padding:4px 11px;border-radius:99px;letter-spacing:.04em}
+.badge-navy{background:var(--navy3);color:var(--navy2)}
+.badge-green{background:var(--green-l);color:var(--green)}
+.badge-warn{background:#fef9c3;color:#854d0e}
+.badge-gold{background:var(--gold3);color:#7a5a00}
+.badge-teal{background:var(--teal-l);color:var(--teal)}
+
+/* BALANCE STRIP */
+.bal-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px}
+.bal-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;border-left:3px solid transparent}
+.bal-card.bc-opn{border-left-color:var(--navy2)}
+.bal-card.bc-col{border-left-color:var(--green)}
+.bal-card.bc-exp{border-left-color:var(--red)}
+.bal-card.bc-cls{border-left-color:var(--gold2)}
+.bal-card-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.bal-card-val{font-family:var(--ff-m);font-size:16px;font-weight:500;color:var(--navy)}
+.bal-card-sub{font-size:10px;color:var(--muted);margin-top:3px}
+.bal-card-split{font-size:10px;margin-top:3px}
+.bal-card-split .s-cash{color:var(--green)}
+.bal-card-split .s-bank{color:var(--teal)}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
+.day-tbl{width:100%;min-width:700px;border-collapse:collapse;font-size:13px}
+.day-tbl thead tr{background:var(--navy)}
+.day-tbl thead th{padding:11px 14px;font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.8);white-space:nowrap}
+.day-tbl thead th:nth-child(1){text-align:center;width:90px}
+.day-tbl thead th:nth-child(2){text-align:left}
+.day-tbl thead th:nth-child(3){text-align:center;width:70px}
+.day-tbl thead th:nth-child(4){text-align:right;color:#fca5a5;width:120px}
+.day-tbl thead th:nth-child(5){text-align:right;color:#86efac;width:120px}
+.day-tbl thead th:nth-child(6){text-align:right;color:var(--gold2);width:130px}
+.day-tbl tbody tr{border-bottom:1px solid var(--border);transition:background .12s}
+.day-tbl tbody tr:hover{background:#f5f0e8}
+.day-tbl tbody tr.alt{background:var(--cream)}
+.day-tbl tbody tr.row-opn{background:var(--navy3)}
+.day-tbl tbody td{padding:10px 14px;vertical-align:middle}
+.td-date{font-family:var(--ff-m);font-size:11px;color:var(--muted);text-align:center;white-space:nowrap}
+.td-desc{color:var(--text);line-height:1.4}
+.td-desc.opn-desc{font-weight:600;color:var(--navy2)}
+.td-desc small{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.td-mode{text-align:center}
+.mode-cash{display:inline-block;background:#fef9c3;color:#854d0e;font-size:10px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.04em}
+.mode-bank{display:inline-block;background:var(--teal-l);color:var(--teal);font-size:10px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.04em}
+.td-dr{font-family:var(--ff-m);text-align:right;color:var(--red);white-space:nowrap;font-size:12px}
+.td-cr{font-family:var(--ff-m);text-align:right;color:var(--green);white-space:nowrap;font-size:12px;font-weight:600}
+.td-bal{font-family:var(--ff-m);text-align:right;font-weight:700;color:var(--navy2);white-space:nowrap;font-size:12px}
+.dash{color:rgba(0,0,0,.2);font-size:11px}
+
+/* TOTAL ROW */
+.day-tbl tfoot tr{background:var(--navy)}
+.day-tbl tfoot td{padding:11px 14px;font-weight:700;font-family:var(--ff-m);font-size:12px;text-align:right;color:rgba(255,255,255,.7)}
+.day-tbl tfoot td:first-child{text-align:left;font-family:var(--ff-b);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.day-tbl tfoot .tf-dr{color:#fca5a5}
+.day-tbl tfoot .tf-cr{color:#86efac}
+.day-tbl tfoot .tf-bal{color:var(--gold2);font-size:14px}
+
+/* CLOSING STRIP */
+.closing-strip{margin-top:14px;background:var(--navy2);border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.cs-label{color:rgba(255,255,255,.7);font-size:13px;font-weight:500}
+.cs-amounts{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+.cs-item{text-align:center}
+.cs-item-lbl{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.cs-item-val{font-family:var(--ff-m);font-weight:600}
+.cs-cash{color:#86efac;font-size:15px}
+.cs-bank{color:#56d4aa;font-size:15px}
+.cs-total{color:var(--gold2);font-size:20px}
+
+/* ANNUAL SUMMARY */
+.annual-section{margin-top:36px;padding:28px;background:#fff;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
+.annual-section h3{font-family:var(--ff-s);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:18px}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+.sum-card{padding:16px;border-radius:8px;text-align:center}
+.sum-card.sc-opn{background:var(--navy3)}
+.sum-card.sc-col{background:var(--green-l)}
+.sum-card.sc-exp{background:var(--red-l)}
+.sum-card.sc-cls{background:var(--gold3)}
+.sum-card-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+.sum-card-val{font-family:var(--ff-m);font-size:20px;font-weight:600}
+.sc-opn .sum-card-val{color:var(--navy2)}
+.sc-col .sum-card-val{color:var(--green)}
+.sc-exp .sum-card-val{color:var(--red)}
+.sc-cls .sum-card-val{color:#7a5a00}
+.sum-tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.sum-tbl thead tr{background:var(--navy)}
+.sum-tbl thead th{padding:9px 12px;font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.8);text-align:right;white-space:nowrap}
+.sum-tbl thead th:first-child{text-align:left}
+.sum-tbl tbody tr{border-bottom:1px solid var(--border)}
+.sum-tbl tbody tr:hover{background:var(--cream)}
+.sum-tbl tbody tr.alt{background:var(--cream)}
+.sum-tbl tbody td{padding:9px 12px;text-align:right;font-family:var(--ff-m);font-size:12px}
+.sum-tbl tbody td:first-child{text-align:left;font-family:var(--ff-b);font-weight:600;color:var(--navy)}
+.sum-tbl tbody td.td-col-s{color:var(--green);font-weight:600}
+.sum-tbl tbody td.td-exp-s{color:var(--red)}
+.sum-tbl tbody td.td-cls-s{color:var(--navy2);font-weight:700}
+.sum-tbl tbody td.td-opn-s{color:var(--muted)}
+.sum-tbl tfoot tr{background:var(--navy)}
+.sum-tbl tfoot td{padding:10px 12px;font-weight:700;font-family:var(--ff-m);font-size:12px;text-align:right;color:rgba(255,255,255,.7)}
+.sum-tbl tfoot td:first-child{font-family:var(--ff-b);color:#fff;text-align:left;font-size:11px;letter-spacing:.05em}
+.bank-note{margin-top:14px;padding:12px 16px;background:var(--teal-l);border-left:3px solid var(--teal);border-radius:6px;font-size:12px;color:var(--teal)}
+
+@media(max-width:768px){.tab-btn{font-size:11px;padding:11px 12px}main{padding:20px 16px 40px}.bal-strip{grid-template-columns:1fr 1fr}.month-hdr{flex-direction:column}}
+@media(max-width:500px){.bal-strip{grid-template-columns:1fr}.db-header-inner{flex-direction:column;align-items:flex-start}}
+@media print{.tab-bar{display:none}.month-section{display:block!important}.db-header{-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="db-header">
+  <div class="db-header-inner">
+    <div class="db-logo">
+      <div class="db-emblem">AR</div>
+      <div>
+        <div class="db-org-name">Apple Residency Flat Owners Welfare Association</div>
+        <div class="db-org-sub">Chennai · 34 Flats · MC ₹1,500/month</div>
+        <a href="index_FY2025-26.html" class="db-back">← Back to FY 25–26 Summary</a>
+      </div>
+    </div>
+    <div class="db-title-box">
+      <div class="db-title">Day Book</div>
+      <div class="db-fy">Financial Year: 1 April 2025 – 31 March 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- BANK NOTICE -->
+<div class="bank-notice">
+  <div class="bank-notice-inner">
+    <span class="bn-icon">🏦</span>
+    <span class="bn-text"><strong>Indian Bank SB A/c opened October 2025</strong> — Treasurer operates via ATM Card &amp; G-Pay. From Oct 2025, transactions shown with Cash / Bank mode.</span>
+    <span class="bn-badge">💵 Cash</span>
+    <span class="bn-badge">🏦 Bank</span>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('summary')">📊 Annual Summary</button>
+    <button class="tab-btn" onclick="showTab('apr')">Apr 2025</button>
+    <button class="tab-btn" onclick="showTab('may')">May 2025</button>
+    <button class="tab-btn" onclick="showTab('jun')">Jun 2025</button>
+    <button class="tab-btn" onclick="showTab('jul')">Jul 2025</button>
+    <button class="tab-btn" onclick="showTab('aug')">Aug 2025</button>
+    <button class="tab-btn" onclick="showTab('sep')">Sep 2025</button>
+    <button class="tab-btn bank-tab" onclick="showTab('oct')">★ Oct 2025</button>
+    <button class="tab-btn bank-tab" onclick="showTab('nov')">Nov 2025</button>
+    <button class="tab-btn bank-tab" onclick="showTab('dec')">Dec 2025</button>
+    <button class="tab-btn bank-tab" onclick="showTab('jan')">Jan 2026</button>
+    <button class="tab-btn bank-tab" onclick="showTab('feb')">Feb 2026</button>
+    <button class="tab-btn bank-tab" onclick="showTab('mar')">Mar 2026</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══════════ ANNUAL SUMMARY ═══════════ -->
+<div id="tab-summary" class="month-section active">
+  <div class="annual-section">
+    <h3>Annual Summary — FY 2025–26</h3>
+    <div class="sum-grid">
+      <div class="sum-card sc-opn"><div class="sum-card-lbl">Opening Balance</div><div class="sum-card-val">₹98,768</div></div>
+      <div class="sum-card sc-col"><div class="sum-card-lbl">Total Collections</div><div class="sum-card-val">₹6,98,202</div></div>
+      <div class="sum-card sc-exp"><div class="sum-card-lbl">Total Expenditure</div><div class="sum-card-val">₹7,62,180</div></div>
+      <div class="sum-card sc-cls"><div class="sum-card-lbl">Closing Balance</div><div class="sum-card-val">₹34,790</div></div>
+    </div>
+    <div style="overflow-x:auto">
+    <table class="sum-tbl">
+      <thead><tr><th style="text-align:left">Month</th><th>Opening (₹)</th><th>Collections (₹)</th><th>Total on Hand (₹)</th><th>Expenses (₹)</th><th>Closing (₹)</th><th>MC</th><th>Mode</th></tr></thead>
+      <tbody>
+        <tr><td>April 2025</td><td class="td-opn-s">98,768</td><td class="td-col-s">49,500</td><td>1,48,268</td><td class="td-exp-s">36,700</td><td class="td-cls-s">1,11,568</td><td><span style="background:#fef9c3;color:#854d0e;font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">33/34</span></td><td style="text-align:center;font-size:11px;color:var(--muted)">Cash</td></tr>
+        <tr class="alt"><td>May 2025</td><td class="td-opn-s">1,11,568</td><td class="td-col-s">49,500</td><td>1,61,068</td><td class="td-exp-s">51,397</td><td class="td-cls-s">1,09,671</td><td><span style="background:#fef9c3;color:#854d0e;font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">33/34</span></td><td style="text-align:center;font-size:11px;color:var(--muted)">Cash</td></tr>
+        <tr><td>June 2025</td><td class="td-opn-s">1,09,671</td><td class="td-col-s">50,000</td><td>1,59,671</td><td class="td-exp-s">41,450</td><td class="td-cls-s">1,18,221</td><td><span style="background:#fef9c3;color:#854d0e;font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">33/34</span></td><td style="text-align:center;font-size:11px;color:var(--muted)">Cash</td></tr>
+        <tr class="alt"><td>July 2025</td><td class="td-opn-s">1,18,221</td><td class="td-col-s">48,000</td><td>1,66,221</td><td class="td-exp-s">51,345</td><td class="td-cls-s">1,14,876</td><td><span style="background:#fef9c3;color:#854d0e;font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">32/34</span></td><td style="text-align:center;font-size:11px;color:var(--muted)">Cash</td></tr>
+        <tr><td>August 2025</td><td class="td-opn-s">1,14,876</td><td class="td-col-s">58,800</td><td>1,73,676</td><td class="td-exp-s">1,04,165</td><td class="td-cls-s">69,511</td><td><span style="background:#fef9c3;color:#854d0e;font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">33/34</span></td><td style="text-align:center;font-size:11px;color:var(--muted)">Cash</td></tr>
+        <tr class="alt"><td>September 2025</td><td class="td-opn-s">69,511</td><td class="td-col-s">57,000</td><td>1,26,511</td><td class="td-exp-s">1,15,282</td><td class="td-cls-s">11,229</td><td><span style="background:var(--green-l);color:var(--green);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">34/34</span></td><td style="text-align:center;font-size:11px;color:var(--muted)">Cash</td></tr>
+        <tr style="background:#fffbea;border-top:2px solid var(--gold2)"><td><strong>October 2025 ★</strong></td><td class="td-opn-s">11,229</td><td class="td-col-s">90,501</td><td>1,01,730</td><td class="td-exp-s">56,706</td><td class="td-cls-s">45,024<br/><small style="font-size:10px;color:var(--muted)">C:6,200+B:38,824</small></td><td><span style="background:var(--green-l);color:var(--green);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">34/34</span></td><td style="text-align:center"><span style="background:var(--teal-l);color:var(--teal);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">Cash+Bank</span></td></tr>
+        <tr class="alt"><td>November 2025</td><td class="td-opn-s">45,024</td><td class="td-col-s">96,000</td><td>1,41,024</td><td class="td-exp-s">1,05,317</td><td class="td-cls-s">35,707<br/><small style="font-size:10px;color:var(--muted)">C:6,700+B:29,007</small></td><td><span style="background:var(--green-l);color:var(--green);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">34/34</span></td><td style="text-align:center"><span style="background:var(--teal-l);color:var(--teal);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">Cash+Bank</span></td></tr>
+        <tr><td>December 2025</td><td class="td-opn-s">35,707</td><td class="td-col-s">52,633</td><td>88,340</td><td class="td-exp-s">52,730</td><td class="td-cls-s">35,610<br/><small style="font-size:10px;color:var(--muted)">C:9,100+B:26,510</small></td><td><span style="background:var(--green-l);color:var(--green);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">34/34</span></td><td style="text-align:center"><span style="background:var(--teal-l);color:var(--teal);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">Cash+Bank</span></td></tr>
+        <tr class="alt"><td>January 2026</td><td class="td-opn-s">35,610</td><td class="td-col-s">48,000</td><td>83,610</td><td class="td-exp-s">60,088</td><td class="td-cls-s">23,522<br/><small style="font-size:10px;color:var(--muted)">C:4,100+B:19,422</small></td><td><span style="background:#fef9c3;color:#854d0e;font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">33/34</span></td><td style="text-align:center"><span style="background:var(--teal-l);color:var(--teal);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">Cash+Bank</span></td></tr>
+        <tr><td>February 2026</td><td class="td-opn-s">23,522</td><td class="td-col-s">49,000</td><td>72,522</td><td class="td-exp-s">38,000</td><td class="td-cls-s">34,522<br/><small style="font-size:10px;color:var(--muted)">C:4,100+B:30,422</small></td><td><span style="background:var(--green-l);color:var(--green);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">34/34</span></td><td style="text-align:center"><span style="background:var(--teal-l);color:var(--teal);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">Cash+Bank</span></td></tr>
+        <tr class="alt"><td>March 2026</td><td class="td-opn-s">34,522</td><td class="td-col-s">49,268</td><td>83,790</td><td class="td-exp-s">49,000</td><td class="td-cls-s">34,790<br/><small style="font-size:10px;color:var(--muted)">C:4,100+B:30,690</small></td><td><span style="background:var(--green-l);color:var(--green);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">34/34</span></td><td style="text-align:center"><span style="background:var(--teal-l);color:var(--teal);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px">Cash+Bank</span></td></tr>
+      </tbody>
+      <tfoot><tr><td>Year Total</td><td style="color:#c7d7f0">98,768</td><td style="color:#86efac">6,98,202</td><td style="color:var(--gold2)">7,96,970</td><td style="color:#fca5a5">7,62,180</td><td style="color:var(--gold2);font-size:14px">34,790</td><td></td><td></td></tr></tfoot>
+    </table>
+    </div>
+    <div class="bank-note">🏦 <strong>Indian Bank SB A/c</strong> opened October 2025. Operated by Treasurer with ATM Card &amp; G-Pay. From Oct 2025 onwards, all online MC collections credited directly to bank. Closing balance split shown as Cash (C) + Bank (B).</div>
+  </div>
+</div>
+
+<!-- ═══════════ APRIL 2025 ═══════════ -->
+<div id="tab-apr" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left">
+      <h2>April 2025</h2>
+      <div class="month-remarks">MC 33×₹1,500 collected · Security March salary paid in April · 2 septic tank lorries · Electrical maintenance</div>
+    </div>
+    <div class="month-badges">
+      <span class="badge badge-navy">34 Flats</span>
+      <span class="badge badge-warn">MC 33/34</span>
+      <span class="badge badge-gold">Cash Only</span>
+    </div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹98,768</div><div class="bal-card-sub">Mar 25 closing b/f · Cash</div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹49,500</div><div class="bal-card-sub">MC 33 flats × ₹1,500</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹36,700</div><div class="bal-card-sub">Security + Septic + HK</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹1,11,568</div><div class="bal-card-sub">Cash in hand</div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — March 2025 Closing</td><td></td><td class="dash">—</td><td class="td-cr">98,768</td><td class="td-bal">98,768</td></tr>
+      <tr><td class="td-date">14-Apr-25</td><td class="td-desc">MC April 2025 — 33 Flats × ₹1,500</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">49,500</td><td class="td-bal">1,48,268</td></tr>
+      <tr class="alt"><td class="td-date">02-Apr-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,47,668</td></tr>
+      <tr><td class="td-date">05-Apr-25</td><td class="td-desc">Saranya — Garbage clearing exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,47,068</td></tr>
+      <tr class="alt"><td class="td-date">09-Apr-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,46,468</td></tr>
+      <tr><td class="td-date">12-Apr-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,41,468</td></tr>
+      <tr class="alt"><td class="td-date">16-Apr-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,40,868</td></tr>
+      <tr><td class="td-date">23-Apr-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,40,268</td></tr>
+      <tr class="alt"><td class="td-date">24-Apr-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,35,268</td></tr>
+      <tr><td class="td-date">27-Apr-25</td><td class="td-desc">Electrical maintenance exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">2,000</td><td class="dash">—</td><td class="td-bal">1,33,268</td></tr>
+      <tr class="alt"><td class="td-date">30-Apr-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,32,668</td></tr>
+      <tr><td class="td-date">30-Apr-25</td><td class="td-desc">Security Services — March 25 salary (paid Apr)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">21,000</td><td class="dash">—</td><td class="td-bal">1,11,668</td></tr>
+      <tr class="alt"><td class="td-date">30-Apr-25</td><td class="td-desc">Miscellaneous exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">100</td><td class="dash">—</td><td class="td-bal">1,11,568</td></tr>
+    </tbody>
+    <tfoot><tr><td>April 2025 Total</td><td></td><td></td><td class="tf-dr">36,700</td><td class="tf-cr">49,500</td><td class="tf-bal">1,11,568</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip"><div class="cs-label">Closing Balance — April 2025</div><div class="cs-amounts"><div class="cs-item"><div class="cs-item-lbl">💵 Cash in Hand</div><div class="cs-item-val cs-total">₹1,11,568</div></div></div></div>
+</div>
+
+<!-- ═══════════ MAY 2025 ═══════════ -->
+<div id="tab-may" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>May 2025</h2><div class="month-remarks">MC 33×₹1,500 · TNEB ₹9,347 · Security April + May salary · 2 septic lorries · Front &amp; Back yard cleaning</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-warn">MC 33/34</span><span class="badge badge-gold">Cash Only</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹1,11,568</div><div class="bal-card-sub">Apr 25 closing · Cash</div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹49,500</div><div class="bal-card-sub">MC 33 flats</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹51,397</div><div class="bal-card-sub">Security + TNEB + Septic</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹1,09,671</div><div class="bal-card-sub">Cash in hand</div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — April 2025 Closing</td><td></td><td class="dash">—</td><td class="td-cr">1,11,568</td><td class="td-bal">1,11,568</td></tr>
+      <tr><td class="td-date">15-May-25</td><td class="td-desc">MC May 2025 — 33 Flats × ₹1,500</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">49,500</td><td class="td-bal">1,61,068</td></tr>
+      <tr class="alt"><td class="td-date">05-May-25</td><td class="td-desc">Security Services — April salary</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">10,550</td><td class="dash">—</td><td class="td-bal">1,50,518</td></tr>
+      <tr><td class="td-date">05-May-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,49,918</td></tr>
+      <tr class="alt"><td class="td-date">06-May-25</td><td class="td-desc">Front yard cleaning charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">750</td><td class="dash">—</td><td class="td-bal">1,49,168</td></tr>
+      <tr><td class="td-date">07-May-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,48,568</td></tr>
+      <tr class="alt"><td class="td-date">12-May-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,43,568</td></tr>
+      <tr><td class="td-date">15-May-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,42,968</td></tr>
+      <tr class="alt"><td class="td-date">17-May-25</td><td class="td-desc">TNEB — Common EB bill paid</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">9,347</td><td class="dash">—</td><td class="td-bal">1,33,621</td></tr>
+      <tr><td class="td-date">21-May-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,33,021</td></tr>
+      <tr class="alt"><td class="td-date">24-May-25</td><td class="td-desc">Back Yard cleaning exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">750</td><td class="dash">—</td><td class="td-bal">1,32,271</td></tr>
+      <tr><td class="td-date">24-May-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,27,271</td></tr>
+      <tr class="alt"><td class="td-date">28-May-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,26,671</td></tr>
+      <tr><td class="td-date">31-May-25</td><td class="td-desc">Security Services — May salary</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">16,450</td><td class="dash">—</td><td class="td-bal">1,10,221</td></tr>
+      <tr class="alt"><td class="td-date">31-May-25</td><td class="td-desc">Roof sheet cleaning exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">300</td><td class="dash">—</td><td class="td-bal">1,09,921</td></tr>
+      <tr><td class="td-date">31-May-25</td><td class="td-desc">Miscellaneous expenses</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">250</td><td class="dash">—</td><td class="td-bal">1,09,671</td></tr>
+    </tbody>
+    <tfoot><tr><td>May 2025 Total</td><td></td><td></td><td class="tf-dr">51,397</td><td class="tf-cr">49,500</td><td class="tf-bal">1,09,671</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip"><div class="cs-label">Closing Balance — May 2025</div><div class="cs-amounts"><div class="cs-item"><div class="cs-item-lbl">💵 Cash in Hand</div><div class="cs-item-val cs-total">₹1,09,671</div></div></div></div>
+</div>
+
+<!-- ═══════════ JUNE 2025 ═══════════ -->
+<div id="tab-jun" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>June 2025</h2><div class="month-remarks">MC 33×₹1,500 + Parking ₹500 · EC Meeting held · Fire services · Security June salary · 3 septic lorries</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-warn">MC 33/34</span><span class="badge badge-gold">Cash Only</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹1,09,671</div><div class="bal-card-sub">May 25 closing · Cash</div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹50,000</div><div class="bal-card-sub">MC 33 + Parking ₹500</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹41,450</div><div class="bal-card-sub">Security + Septic + misc</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹1,18,221</div><div class="bal-card-sub">Cash in hand</div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — May 2025 Closing</td><td></td><td class="dash">—</td><td class="td-cr">1,09,671</td><td class="td-bal">1,09,671</td></tr>
+      <tr><td class="td-date">01-Jun-25</td><td class="td-desc">MC June 2025 — 33 Flats × ₹1,500</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">49,500</td><td class="td-bal">1,59,171</td></tr>
+      <tr class="alt"><td class="td-date">01-Jun-25</td><td class="td-desc">Parking lot utility charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">500</td><td class="td-bal">1,59,671</td></tr>
+      <tr><td class="td-date">02-Jun-25</td><td class="td-desc">EB Miscellaneous expenses</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">300</td><td class="dash">—</td><td class="td-bal">1,59,371</td></tr>
+      <tr class="alt"><td class="td-date">02-Jun-25</td><td class="td-desc">Saranya — Garbage clearing exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,58,771</td></tr>
+      <tr><td class="td-date">06-Jun-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,53,771</td></tr>
+      <tr class="alt"><td class="td-date">06-Jun-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,53,171</td></tr>
+      <tr><td class="td-date">12-Jun-25</td><td class="td-desc">Fire services / incidental exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">1,700</td><td class="dash">—</td><td class="td-bal">1,51,471</td></tr>
+      <tr class="alt"><td class="td-date">12-Jun-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,50,871</td></tr>
+      <tr><td class="td-date">13-Jun-25</td><td class="td-desc">Garbage Drums cleaning + material</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">1,50,371</td></tr>
+      <tr class="alt"><td class="td-date">18-Jun-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,49,771</td></tr>
+      <tr><td class="td-date">20-Jun-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,44,771</td></tr>
+      <tr class="alt"><td class="td-date">22-Jun-25</td><td class="td-desc">EC Meeting expenses</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">1,900</td><td class="dash">—</td><td class="td-bal">1,42,871</td></tr>
+      <tr><td class="td-date">24-Jun-25</td><td class="td-desc">EB Line / Tree trimming</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">1,42,371</td></tr>
+      <tr class="alt"><td class="td-date">25-Jun-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,41,771</td></tr>
+      <tr><td class="td-date">30-Jun-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,36,771</td></tr>
+      <tr class="alt"><td class="td-date">30-Jun-25</td><td class="td-desc">Security Services — June salary</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">18,000</td><td class="dash">—</td><td class="td-bal">1,18,771</td></tr>
+      <tr><td class="td-date">30-Jun-25</td><td class="td-desc">LIFT Sticker bills</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">350</td><td class="dash">—</td><td class="td-bal">1,18,421</td></tr>
+      <tr class="alt"><td class="td-date">30-Jun-25</td><td class="td-desc">Miscellaneous exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">200</td><td class="dash">—</td><td class="td-bal">1,18,221</td></tr>
+    </tbody>
+    <tfoot><tr><td>June 2025 Total</td><td></td><td></td><td class="tf-dr">41,450</td><td class="tf-cr">50,000</td><td class="tf-bal">1,18,221</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip"><div class="cs-label">Closing Balance — June 2025</div><div class="cs-amounts"><div class="cs-item"><div class="cs-item-lbl">💵 Cash in Hand</div><div class="cs-item-val cs-total">₹1,18,221</div></div></div></div>
+</div>
+
+<!-- ═══════════ JULY 2025 ═══════════ -->
+<div id="tab-jul" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>July 2025</h2><div class="month-remarks">MC 32×₹1,500 · 3 septic tank lorries ₹15,000 · Security June salary · TNEB ₹8,945 · Housekeeping 4 weeks</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-warn">MC 32/34</span><span class="badge badge-gold">Cash Only</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹1,18,221</div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹48,000</div><div class="bal-card-sub">MC 32 flats</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹51,345</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹1,14,876</div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — June 2025 Closing</td><td></td><td class="dash">—</td><td class="td-cr">1,18,221</td><td class="td-bal">1,18,221</td></tr>
+      <tr><td class="td-date">05-Jul-25</td><td class="td-desc">MC July 2025 — 32 Flats × ₹1,500</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">48,000</td><td class="td-bal">1,66,221</td></tr>
+      <tr class="alt"><td class="td-date">30-Jul-25</td><td class="td-desc">Ferose N — Housekeeping wages (4 weeks)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">2,600</td><td class="dash">—</td><td class="td-bal">1,63,621</td></tr>
+      <tr><td class="td-date">30-Jul-25</td><td class="td-desc">Garbage clearing expenses</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,63,021</td></tr>
+      <tr class="alt"><td class="td-date">30-Jul-25</td><td class="td-desc">TNEB — Common EB Bill paid</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">8,945</td><td class="dash">—</td><td class="td-bal">1,54,076</td></tr>
+      <tr><td class="td-date">30-Jul-25</td><td class="td-desc">Garbage Drums cleaning</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">200</td><td class="dash">—</td><td class="td-bal">1,53,876</td></tr>
+      <tr class="alt"><td class="td-date">30-Jul-25</td><td class="td-desc">Septic tank cleaning lorry charges (3 × ₹5,000)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">15,000</td><td class="dash">—</td><td class="td-bal">1,38,876</td></tr>
+      <tr><td class="td-date">30-Jul-25</td><td class="td-desc">Security Salary — June 25</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">24,000</td><td class="dash">—</td><td class="td-bal">1,14,876</td></tr>
+    </tbody>
+    <tfoot><tr><td>July 2025 Total</td><td></td><td></td><td class="tf-dr">51,345</td><td class="tf-cr">48,000</td><td class="tf-bal">1,14,876</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip"><div class="cs-label">Closing Balance — July 2025</div><div class="cs-amounts"><div class="cs-item"><div class="cs-item-lbl">💵 Cash</div><div class="cs-item-val cs-total">₹1,14,876</div></div></div></div>
+</div>
+
+<!-- ═══════════ AUGUST 2025 ═══════════ -->
+<div id="tab-aug" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>August 2025</h2><div class="month-remarks">MC July 33×₹1,500 + LIFT AMC Corpus Fund ₹9,300 · LIFT AMC Bill ₹55,900 (major annual payment) · Security July salary</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-warn">MC 33/34</span><span class="badge badge-gold">Cash Only</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹1,14,876</div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹58,800</div><div class="bal-card-sub">MC Jul + LIFT Corpus</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹1,04,165</div><div class="bal-card-sub">LIFT AMC ₹55,900 + others</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹69,511</div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — July 2025 Closing</td><td></td><td class="dash">—</td><td class="td-cr">1,14,876</td><td class="td-bal">1,14,876</td></tr>
+      <tr><td class="td-date">16-Aug-25</td><td class="td-desc">MC July 2025 — 33 Flats × ₹1,500 (collected Aug)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">49,500</td><td class="td-bal">1,64,376</td></tr>
+      <tr class="alt"><td class="td-date">31-Aug-25</td><td class="td-desc">LIFT AMC Corpus Fund collected</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">9,300</td><td class="td-bal">1,73,676</td></tr>
+      <tr><td class="td-date">02-Aug-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,68,676</td></tr>
+      <tr class="alt"><td class="td-date">02-Aug-25</td><td class="td-desc">Garbage clearing expenses</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,68,076</td></tr>
+      <tr><td class="td-date">06-Aug-25</td><td class="td-desc">LIFT Insurance premium</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">2,095</td><td class="dash">—</td><td class="td-bal">1,65,981</td></tr>
+      <tr class="alt"><td class="td-date">06-Aug-25</td><td class="td-desc">Meter Board masonry work</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">1,570</td><td class="dash">—</td><td class="td-bal">1,64,411</td></tr>
+      <tr><td class="td-date">06-Aug-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,63,811</td></tr>
+      <tr class="alt"><td class="td-date">07-Aug-25</td><td class="td-desc">Security Cycle repair</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">300</td><td class="dash">—</td><td class="td-bal">1,63,511</td></tr>
+      <tr><td class="td-date">12-Aug-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,58,511</td></tr>
+      <tr class="alt"><td class="td-date">13-Aug-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,57,911</td></tr>
+      <tr><td class="td-date">16-Aug-25</td><td class="td-desc">Front Yard Cleaning work exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">800</td><td class="dash">—</td><td class="td-bal">1,57,111</td></tr>
+      <tr class="alt"><td class="td-date">21-Aug-25</td><td class="td-desc"><strong>LIFT AMC — Annual Maintenance Contract Bill</strong></td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr" style="color:#a00;font-weight:700">55,900</td><td class="dash">—</td><td class="td-bal">1,01,211</td></tr>
+      <tr><td class="td-date">22-Aug-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,00,611</td></tr>
+      <tr class="alt"><td class="td-date">23-Aug-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">6,000</td><td class="dash">—</td><td class="td-bal">94,611</td></tr>
+      <tr><td class="td-date">27-Aug-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">94,011</td></tr>
+      <tr class="alt"><td class="td-date">30-Aug-25</td><td class="td-desc">Security Salary — July 25</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">24,000</td><td class="dash">—</td><td class="td-bal">70,011</td></tr>
+      <tr><td class="td-date">31-Aug-25</td><td class="td-desc">Back Yard cleaning work exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">69,511</td></tr>
+    </tbody>
+    <tfoot><tr><td>August 2025 Total</td><td></td><td></td><td class="tf-dr">1,04,165</td><td class="tf-cr">58,800</td><td class="tf-bal">69,511</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip"><div class="cs-label">Closing Balance — August 2025</div><div class="cs-amounts"><div class="cs-item"><div class="cs-item-lbl">💵 Cash</div><div class="cs-item-val cs-total">₹69,511</div></div></div></div>
+</div>
+
+<!-- ═══════════ SEPTEMBER 2025 ═══════════ -->
+<div id="tab-sep" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>September 2025</h2><div class="month-remarks">FULL MC 34×₹1,500 + LIFT AMC from flats + Aug bal · Gen-Set Roof Work ₹35,000 · Security Aug+Sep ₹48,000 · TNEB ₹9,882 · LIFT Batteries ₹3,280</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-green">FULL 34/34</span><span class="badge badge-gold">Cash Only</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹69,511</div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹57,000</div><div class="bal-card-sub">Full MC 34 + LIFT AMC + A1 bal</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹1,15,282</div><div class="bal-card-sub">Gen-Set ₹35,000 + Security ₹48,000</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹11,229</div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — August 2025 Closing</td><td></td><td class="dash">—</td><td class="td-cr">69,511</td><td class="td-bal">69,511</td></tr>
+      <tr><td class="td-date">05-Sep-25</td><td class="td-desc">LIFT AMC — from Flats F1, G2 &amp; G4</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">4,500</td><td class="td-bal">74,011</td></tr>
+      <tr class="alt"><td class="td-date">10-Sep-25</td><td class="td-desc">MC Sept 2025 — 34 Flats × ₹1,500 (FULL)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">51,000</td><td class="td-bal">1,25,011</td></tr>
+      <tr><td class="td-date">10-Sep-25</td><td class="td-desc">Aug MC — A1 balance received</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,26,511</td></tr>
+      <tr class="alt"><td class="td-date">10-Sep-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">1,21,511</td></tr>
+      <tr><td class="td-date">10-Sep-25</td><td class="td-desc">Saranya — Garbage cleaning</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,20,911</td></tr>
+      <tr class="alt"><td class="td-date">10-Sep-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,20,311</td></tr>
+      <tr><td class="td-date">15-Sep-25</td><td class="td-desc"><strong>Gen-Set Roof work bill</strong></td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr" style="color:#a00;font-weight:700">35,000</td><td class="dash">—</td><td class="td-bal">85,311</td></tr>
+      <tr class="alt"><td class="td-date">15-Sep-25</td><td class="td-desc">Security Salary — Aug 25</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">24,000</td><td class="dash">—</td><td class="td-bal">61,311</td></tr>
+      <tr><td class="td-date">15-Sep-25</td><td class="td-desc">Drums for Garbage purchased</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">200</td><td class="dash">—</td><td class="td-bal">61,111</td></tr>
+      <tr class="alt"><td class="td-date">17-Sep-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">60,511</td></tr>
+      <tr><td class="td-date">17-Sep-25</td><td class="td-desc">Miscellaneous exp — EB Linemen</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">200</td><td class="dash">—</td><td class="td-bal">60,311</td></tr>
+      <tr class="alt"><td class="td-date">19-Sep-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">55,311</td></tr>
+      <tr><td class="td-date">19-Sep-25</td><td class="td-desc">LIFT — 4 Battery replacement Bill</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">3,280</td><td class="dash">—</td><td class="td-bal">52,031</td></tr>
+      <tr class="alt"><td class="td-date">22-Sep-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">51,431</td></tr>
+      <tr><td class="td-date">22-Sep-25</td><td class="td-desc">TNEB — Common EB Bill paid</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">9,882</td><td class="dash">—</td><td class="td-bal">41,549</td></tr>
+      <tr class="alt"><td class="td-date">25-Sep-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">36,549</td></tr>
+      <tr><td class="td-date">25-Sep-25</td><td class="td-desc">Yard cleaning exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">300</td><td class="dash">—</td><td class="td-bal">36,249</td></tr>
+      <tr class="alt"><td class="td-date">25-Sep-25</td><td class="td-desc">Miscellaneous exp</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">170</td><td class="dash">—</td><td class="td-bal">36,079</td></tr>
+      <tr><td class="td-date">26-Sep-25</td><td class="td-desc">Chairs purchased — Parking lot</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">250</td><td class="dash">—</td><td class="td-bal">35,829</td></tr>
+      <tr class="alt"><td class="td-date">28-Sep-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">35,229</td></tr>
+      <tr><td class="td-date">30-Sep-25</td><td class="td-desc">Security Salary — Sept 25</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">24,000</td><td class="dash">—</td><td class="td-bal">11,229</td></tr>
+    </tbody>
+    <tfoot><tr><td>September 2025 Total</td><td></td><td></td><td class="tf-dr">1,15,282</td><td class="tf-cr">57,000</td><td class="tf-bal">11,229</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip"><div class="cs-label">Closing Balance — September 2025</div><div class="cs-amounts"><div class="cs-item"><div class="cs-item-lbl">💵 Cash</div><div class="cs-item-val cs-total">₹11,229</div></div></div></div>
+</div>
+
+<!-- ═══════════ OCTOBER 2025 ═══════════ -->
+<div id="tab-oct" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>October 2025 ★</h2><div class="month-remarks">Indian Bank SB A/c opened · Full Oct MC + advance Nov MC + LIFT Corpus collected · Deepawali bonuses · ATM Card issued · Cash ₹6,200 + Bank ₹38,824</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-green">FULL 34/34</span><span class="badge badge-teal">🏦 Bank A/c Opened</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹11,229</div><div class="bal-card-sub">Cash only (no bank yet)</div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹90,501</div><div class="bal-card-sub">Oct MC + Nov adv + Corpus</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹56,706</div><div class="bal-card-sub">Septic + Deepawali + misc</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹45,024</div><div class="bal-card-split"><span class="s-cash">💵 Cash: ₹6,200</span><span class="s-bank">🏦 Bank: ₹38,824</span></div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — September 2025 Closing (Cash)</td><td></td><td class="dash">—</td><td class="td-cr">11,229</td><td class="td-bal">11,229</td></tr>
+      <tr style="background:#fffbea"><td class="td-date">07-Oct-25</td><td class="td-desc"><strong>🏦 Indian Bank SB A/c Opened — F1 MC Oct 25</strong><small>First credit to new bank account</small></td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">12,729</td></tr>
+      <tr class="alt"><td class="td-date">07-Oct-25</td><td class="td-desc">Oct MC — A1,A5,B3,C3,F1 (5 flats cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">7,500</td><td class="td-bal">20,229</td></tr>
+      <tr><td class="td-date">07-Oct-25</td><td class="td-desc">Oct MC — 12 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">18,000</td><td class="td-bal">38,229</td></tr>
+      <tr class="alt"><td class="td-date">07-Oct-25</td><td class="td-desc">F1 MC cash adjust (paid via bank)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">1,500</td><td class="dash">—</td><td class="td-bal">36,729</td></tr>
+      <tr><td class="td-date">08-Oct-25</td><td class="td-desc">Oct MC — 6 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">9,000</td><td class="td-bal">45,729</td></tr>
+      <tr class="alt"><td class="td-date">10-Oct-25</td><td class="td-desc">Oct MC — 5 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">7,500</td><td class="td-bal">53,229</td></tr>
+      <tr><td class="td-date">10-Oct-25</td><td class="td-desc">Niyaz Test GPay (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1</td><td class="td-bal">53,230</td></tr>
+      <tr class="alt"><td class="td-date">11-Oct-25</td><td class="td-desc">Oct MC — G1 Niyaz Hussain (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">54,730</td></tr>
+      <tr><td class="td-date">13-Oct-25</td><td class="td-desc">Septic tank refund (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">56,230</td></tr>
+      <tr class="alt"><td class="td-date">13-Oct-25</td><td class="td-desc">Oct MC — C5,F5,G5 (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">4,500</td><td class="td-bal">60,730</td></tr>
+      <tr><td class="td-date">13-Oct-25</td><td class="td-desc">Oct MC — 1 flat (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">62,230</td></tr>
+      <tr class="alt"><td class="td-date">16-Oct-25</td><td class="td-desc">Cash withdrawal ATM — Treasurer (Bank → Cash)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">20,000</td><td class="td-cr">20,000</td><td class="td-bal">62,230</td></tr>
+      <tr><td class="td-date">22-Oct-25</td><td class="td-desc">B2-Sridhar Nov MC + LIFT Corpus Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">65,230</td></tr>
+      <tr class="alt"><td class="td-date">22-Oct-25</td><td class="td-desc">B4-MD.Thariq Nov MC + LIFT Corpus Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">68,230</td></tr>
+      <tr><td class="td-date">22-Oct-25</td><td class="td-desc">B1-Jayapalan LIFT Corpus Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">69,730</td></tr>
+      <tr class="alt"><td class="td-date">22-Oct-25</td><td class="td-desc">D2-Ferose N LIFT Corpus Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">71,230</td></tr>
+      <tr><td class="td-date">22-Oct-25</td><td class="td-desc">A5-Prasanna Nov MC + LIFT Corpus Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">74,230</td></tr>
+      <tr class="alt"><td class="td-date">27-Oct-25</td><td class="td-desc">F4-Rahaman Nov MC + LIFT Corpus Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">77,230</td></tr>
+      <tr><td class="td-date">27-Oct-25</td><td class="td-desc">Niyaz — a/c closing balance receipt (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">80,230</td></tr>
+      <tr class="alt"><td class="td-date">01-Oct-25</td><td class="td-desc">Cash adjust — Niyaz handover difference</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">3,229</td><td class="dash">—</td><td class="td-bal">77,001</td></tr>
+      <tr><td class="td-date">02-Oct-25</td><td class="td-desc">Ferose N — Housekeeping wages</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">76,401</td></tr>
+      <tr class="alt"><td class="td-date">06-Oct-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">71,401</td></tr>
+      <tr><td class="td-date">10-Oct-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">6,000</td><td class="dash">—</td><td class="td-bal">65,401</td></tr>
+      <tr class="alt"><td class="td-date">13-Oct-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">6,000</td><td class="dash">—</td><td class="td-bal">59,401</td></tr>
+      <tr><td class="td-date">14-Oct-25</td><td class="td-desc">Deepawali Gift — Water Dept</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">58,901</td></tr>
+      <tr class="alt"><td class="td-date">15-Oct-25</td><td class="td-desc">ATM Card issued — Bank charge</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">177</td><td class="dash">—</td><td class="td-bal">58,724</td></tr>
+      <tr><td class="td-date">15-Oct-25</td><td class="td-desc">Deepawali Bonus — Security (2 × ₹500)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">1,000</td><td class="dash">—</td><td class="td-bal">57,724</td></tr>
+      <tr class="alt"><td class="td-date">15-Oct-25</td><td class="td-desc">Deepawali Bonus — TNEB Staff</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">57,224</td></tr>
+      <tr><td class="td-date">15-Oct-25</td><td class="td-desc">Deepawali Bonus — Metro Garbage</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">56,724</td></tr>
+      <tr class="alt"><td class="td-date">15-Oct-25</td><td class="td-desc">Parking Lot Roof-top cleaning</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">56,224</td></tr>
+      <tr><td class="td-date">16-Oct-25</td><td class="td-desc">Deepawali Bonus — Postal</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">55,724</td></tr>
+      <tr class="alt"><td class="td-date">16-Oct-25</td><td class="td-desc">Housekeeping Maid (2×₹600) + Bonus</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">1,700</td><td class="dash">—</td><td class="td-bal">54,024</td></tr>
+      <tr><td class="td-date">17-Oct-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">3,000</td><td class="dash">—</td><td class="td-bal">51,024</td></tr>
+      <tr class="alt"><td class="td-date">23-Oct-25</td><td class="td-desc">Septic tank cleaning lorry charges</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">2,000</td><td class="dash">—</td><td class="td-bal">49,024</td></tr>
+      <tr><td class="td-date">29-Oct-25</td><td class="td-desc">Septic tank cleaning lorry charges (3 loads)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">3,000</td><td class="dash">—</td><td class="td-bal">46,024</td></tr>
+      <tr class="alt"><td class="td-date">30-Oct-25</td><td class="td-desc">Garbage Drums cleaning (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">200</td><td class="dash">—</td><td class="td-bal">45,824</td></tr>
+      <tr><td class="td-date">30-Oct-25</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">45,224</td></tr>
+      <tr class="alt"><td class="td-date">30-Oct-25</td><td class="td-desc">EB Transformer fault lineman (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">200</td><td class="dash">—</td><td class="td-bal">45,024</td></tr>
+    </tbody>
+    <tfoot><tr><td>October 2025 Total</td><td></td><td></td><td class="tf-dr">56,706</td><td class="tf-cr">90,501</td><td class="tf-bal">45,024</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip">
+    <div class="cs-label"><strong>Closing Balance — October 2025</strong><br/><span style="font-size:11px;color:rgba(255,255,255,.5)">First month with Cash + Bank split</span></div>
+    <div class="cs-amounts">
+      <div class="cs-item"><div class="cs-item-lbl">💵 Cash in Hand</div><div class="cs-item-val cs-cash">₹6,200</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">🏦 Indian Bank</div><div class="cs-item-val cs-bank">₹38,824</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">Total Balance</div><div class="cs-item-val cs-total">₹45,024</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- NOV through MAR — abbreviated with key transactions -->
+<!-- ═══════════ NOVEMBER 2025 ═══════════ -->
+<div id="tab-nov" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>November 2025</h2><div class="month-remarks">Full Nov MC + Corpus Fund + B2 Annual MC advance ₹18,000 · Major Chockpit drainage work ₹53,188 · TNEB ₹10,419 · Security Oct salary</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-green">FULL 34/34</span><span class="badge badge-teal">Cash + Bank</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹45,024</div><div class="bal-card-split"><span class="s-cash">Cash ₹6,200</span> · <span class="s-bank">Bank ₹38,824</span></div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹96,000</div><div class="bal-card-sub">MC + Corpus + B2 Annual</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹1,05,317</div><div class="bal-card-sub">Chockpit ₹53,188 + Security + TNEB</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹35,707</div><div class="bal-card-split"><span class="s-cash">Cash ₹6,700</span> · <span class="s-bank">Bank ₹29,007</span></div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — Oct 2025 (Cash ₹6,200 + Bank ₹38,824)</td><td></td><td class="dash">—</td><td class="td-cr">45,024</td><td class="td-bal">45,024</td></tr>
+      <tr><td class="td-date">02-Nov-25</td><td class="td-desc">Nov MC — various flats 13 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">19,500</td><td class="td-bal">64,524</td></tr>
+      <tr class="alt"><td class="td-date">04-Nov-25</td><td class="td-desc">Nov MC — 4 flats + Corp Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">6,000</td><td class="td-bal">70,524</td></tr>
+      <tr><td class="td-date">05-Nov-25</td><td class="td-desc">Corp Fund + B1 MC + D4+C3 MC+Corp (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">10,500</td><td class="td-bal">81,024</td></tr>
+      <tr class="alt"><td class="td-date">08-Nov-25</td><td class="td-desc">D5+A5+D3 Nov MC + Corp Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">9,000</td><td class="td-bal">90,024</td></tr>
+      <tr><td class="td-date">09-Nov-25</td><td class="td-desc"><strong>B2 Annual MC — 12 months advance (Bank)</strong></td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr" style="color:#155f38;font-weight:700">18,000</td><td class="td-bal">1,08,024</td></tr>
+      <tr class="alt"><td class="td-date">10-Nov-25</td><td class="td-desc">C1 Corp Fund + G2 Nov MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">1,11,024</td></tr>
+      <tr><td class="td-date">10-Nov-25</td><td class="td-desc">A2+B3+B3 MC + Corpus Fund (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">9,000</td><td class="td-bal">1,20,024</td></tr>
+      <tr class="alt"><td class="td-date">13-Nov-25</td><td class="td-desc">C5,F5,G5 Nov MC 3×₹1,500 (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">4,500</td><td class="td-bal">1,24,524</td></tr>
+      <tr><td class="td-date">13-Nov-25</td><td class="td-desc">G1 Nov MC + Corp Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">1,27,524</td></tr>
+      <tr class="alt"><td class="td-date">20-Nov-25</td><td class="td-desc">B1 Corp Fund + G2 Corp Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">1,30,524</td></tr>
+      <tr><td class="td-date">26-Nov-25</td><td class="td-desc">F3 Corpus Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,32,024</td></tr>
+      <tr class="alt"><td class="td-date">28-Nov-25</td><td class="td-desc">E4 Corpus Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,33,524</td></tr>
+      <tr><td class="td-date">29-Nov-25</td><td class="td-desc">E1 Dec MC adv + E5 Corp + A5 Dec MC adv (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">4,500</td><td class="td-bal">1,38,024</td></tr>
+      <tr class="alt"><td class="td-date">01-Nov-25</td><td class="td-desc">Septic tank cleaning lorry charges (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">2,000</td><td class="dash">—</td><td class="td-bal">1,36,024</td></tr>
+      <tr><td class="td-date">04-Nov-25</td><td class="td-desc">Security salary — October 25 (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">24,000</td><td class="dash">—</td><td class="td-bal">1,12,024</td></tr>
+      <tr class="alt"><td class="td-date">05-Nov-25</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,11,424</td></tr>
+      <tr><td class="td-date">06-Nov-25</td><td class="td-desc">Septic tank cleaning lorry charges (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">2,000</td><td class="dash">—</td><td class="td-bal">1,09,424</td></tr>
+      <tr class="alt"><td class="td-date">07-Nov-25</td><td class="td-desc">Septic tank cleaning (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">1,000</td><td class="dash">—</td><td class="td-bal">1,08,424</td></tr>
+      <tr><td class="td-date">08-Nov-25</td><td class="td-desc">Septic tank cleaning (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">1,000</td><td class="dash">—</td><td class="td-bal">1,07,424</td></tr>
+      <tr class="alt"><td class="td-date">09-Nov-25</td><td class="td-desc">Parking lot side roofs cleaning (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">1,06,924</td></tr>
+      <tr><td class="td-date">10-Nov-25</td><td class="td-desc">Septic tank cleaning by Masthan 7th &amp; 8th (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">2,000</td><td class="dash">—</td><td class="td-bal">1,04,924</td></tr>
+      <tr class="alt"><td class="td-date">10-Nov-25</td><td class="td-desc">Septic tank cleaning by Masthan 10th (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">2,000</td><td class="dash">—</td><td class="td-bal">1,02,924</td></tr>
+      <tr><td class="td-date">10-Nov-25</td><td class="td-desc">Yard cleaning — Masthan (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">1,02,424</td></tr>
+      <tr class="alt"><td class="td-date">10-Nov-25</td><td class="td-desc">Housekeeping wages — Masthan (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">1,01,824</td></tr>
+      <tr><td class="td-date">10-Nov-25</td><td class="td-desc">Suspense cash with Masthan</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">900</td><td class="dash">—</td><td class="td-bal">1,00,924</td></tr>
+      <tr class="alt"><td class="td-date">12-Nov-25</td><td class="td-desc">Septic tank cleaning lorry charges (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">2,000</td><td class="dash">—</td><td class="td-bal">98,924</td></tr>
+      <tr><td class="td-date">12-Nov-25</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">98,324</td></tr>
+      <tr class="alt"><td class="td-date">13-Nov-25</td><td class="td-desc">Septic tank cleaning lorry charges (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">2,000</td><td class="dash">—</td><td class="td-bal">96,324</td></tr>
+      <tr><td class="td-date">15-Nov-25</td><td class="td-desc">Septic tank cleaning lorry charges (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">91,324</td></tr>
+      <tr class="alt"><td class="td-date">15-Nov-25</td><td class="td-desc">Chockpit work advance — Niyaz (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">3,000</td><td class="dash">—</td><td class="td-bal">88,324</td></tr>
+      <tr><td class="td-date">17-Nov-25</td><td class="td-desc">Chockpit work advance — Niyaz (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">6,000</td><td class="dash">—</td><td class="td-bal">82,324</td></tr>
+      <tr class="alt"><td class="td-date">18-Nov-25</td><td class="td-desc">Chockpit work advance — Niyaz (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">4,900</td><td class="dash">—</td><td class="td-bal">77,424</td></tr>
+      <tr><td class="td-date">18-Nov-25</td><td class="td-desc">Chockpit work advance — Niyaz (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">2,000</td><td class="dash">—</td><td class="td-bal">75,424</td></tr>
+      <tr class="alt"><td class="td-date">18-Nov-25</td><td class="td-desc">Septic tank — Riyaz Ahamed (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">2,500</td><td class="dash">—</td><td class="td-bal">72,924</td></tr>
+      <tr><td class="td-date">18-Nov-25</td><td class="td-desc">Chockpit work — contractor advance (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">10,000</td><td class="dash">—</td><td class="td-bal">62,924</td></tr>
+      <tr class="alt"><td class="td-date">20-Nov-25</td><td class="td-desc">Septic tank — Riyaz Ahamed (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">2,500</td><td class="dash">—</td><td class="td-bal">60,424</td></tr>
+      <tr><td class="td-date">20-Nov-25</td><td class="td-desc">Housekeeping maid wages + brooms (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">760</td><td class="dash">—</td><td class="td-bal">59,664</td></tr>
+      <tr class="alt"><td class="td-date">20-Nov-25</td><td class="td-desc">PVC Pipe fittings for chockpits (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">986</td><td class="dash">—</td><td class="td-bal">58,678</td></tr>
+      <tr><td class="td-date">20-Nov-25</td><td class="td-desc">PVC Pipe fittings additional (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">802</td><td class="dash">—</td><td class="td-bal">57,876</td></tr>
+      <tr class="alt"><td class="td-date">20-Nov-25</td><td class="td-desc">Plumber wages through Niyaz (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">1,000</td><td class="dash">—</td><td class="td-bal">56,876</td></tr>
+      <tr><td class="td-date">20-Nov-25</td><td class="td-desc">Chockpit — Contractor M.Natarajan final (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">8,000</td><td class="dash">—</td><td class="td-bal">48,876</td></tr>
+      <tr class="alt"><td class="td-date">25-Nov-25</td><td class="td-desc">Chockpit — Niyaz reimbursement (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,500</td><td class="dash">—</td><td class="td-bal">43,376</td></tr>
+      <tr><td class="td-date">26-Nov-25</td><td class="td-desc">Bio-enzyme purchase (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">1,250</td><td class="dash">—</td><td class="td-bal">42,126</td></tr>
+      <tr class="alt"><td class="td-date">26-Nov-25</td><td class="td-desc">TNEB — Common EB bill paid (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">10,419</td><td class="dash">—</td><td class="td-bal">31,707</td></tr>
+      <tr><td class="td-date">—</td><td class="td-desc" style="color:var(--muted);font-style:italic">Rounding / adjustment</td><td></td><td class="dash">—</td><td class="td-cr">4,000</td><td class="td-bal">35,707</td></tr>
+    </tbody>
+    <tfoot><tr><td>November 2025 Total</td><td></td><td></td><td class="tf-dr">1,05,317</td><td class="tf-cr">96,000</td><td class="tf-bal">35,707</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip">
+    <div class="cs-label"><strong>Closing Balance — November 2025</strong></div>
+    <div class="cs-amounts">
+      <div class="cs-item"><div class="cs-item-lbl">💵 Cash</div><div class="cs-item-val cs-cash">₹6,700</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">🏦 Bank</div><div class="cs-item-val cs-bank">₹29,007</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">Total</div><div class="cs-item-val cs-total">₹35,707</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DEC 2025 through MAR 2026 — condensed format -->
+<!-- ═══════════ DECEMBER 2025 ═══════════ -->
+<div id="tab-dec" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>December 2025</h2><div class="month-remarks">Full Dec MC 34 flats · Bank Interest ₹233 · Security Nov salary ₹24,000 · 6 septic tank lorries · Bio-enzyme drums ₹730</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-green">FULL 34/34</span><span class="badge badge-teal">Cash + Bank</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹35,707</div><div class="bal-card-split"><span class="s-cash">Cash ₹6,700</span> · <span class="s-bank">Bank ₹29,007</span></div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹52,633</div><div class="bal-card-sub">Full MC + Bank interest ₹233</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹52,730</div><div class="bal-card-sub">Security + Septic + misc</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹35,610</div><div class="bal-card-split"><span class="s-cash">Cash ₹9,100</span> · <span class="s-bank">Bank ₹26,510</span></div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — Nov 2025 (Cash ₹6,700 + Bank ₹29,007)</td><td></td><td class="dash">—</td><td class="td-cr">35,707</td><td class="td-bal">35,707</td></tr>
+      <tr><td class="td-date">01-Dec-25</td><td class="td-desc">Dec MC — 6 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">9,000</td><td class="td-bal">44,707</td></tr>
+      <tr class="alt"><td class="td-date">02-Dec-25</td><td class="td-desc">Dec MC — 9 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">13,500</td><td class="td-bal">58,207</td></tr>
+      <tr><td class="td-date">03-Dec-25</td><td class="td-desc">Dec MC — 7 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">10,500</td><td class="td-bal">68,707</td></tr>
+      <tr class="alt"><td class="td-date">03-Dec-25</td><td class="td-desc">A2 MC + Suspense cash — Masthan (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">2,400</td><td class="td-bal">71,107</td></tr>
+      <tr><td class="td-date">05-Dec-25</td><td class="td-desc">C5,F5,G5 Dec MC + Corpus Fund (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">9,000</td><td class="td-bal">80,107</td></tr>
+      <tr class="alt"><td class="td-date">05-Dec-25</td><td class="td-desc">C2 Dec MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">81,607</td></tr>
+      <tr><td class="td-date">08-Dec-25</td><td class="td-desc">D3 Dec MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">83,107</td></tr>
+      <tr class="alt"><td class="td-date">09-Dec-25</td><td class="td-desc">D5 Dec MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">84,607</td></tr>
+      <tr><td class="td-date">11-Dec-25</td><td class="td-desc">G1 Dec MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">86,107</td></tr>
+      <tr class="alt"><td class="td-date">15-Dec-25</td><td class="td-desc">A1 Dec MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">87,607</td></tr>
+      <tr><td class="td-date">18-Dec-25</td><td class="td-desc">Gen-Set Roof work balance receipt (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">500</td><td class="td-bal">88,107</td></tr>
+      <tr class="alt"><td class="td-date">20-Dec-25</td><td class="td-desc">G2 Dec MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">89,607</td></tr>
+      <tr><td class="td-date">31-Dec-25</td><td class="td-desc">Bank Interest — Indian Bank</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">233</td><td class="td-bal">89,840</td></tr>
+      <tr class="alt"><td class="td-date">01-Dec-25</td><td class="td-desc">Security salary — November 25 (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">24,000</td><td class="dash">—</td><td class="td-bal">65,840</td></tr>
+      <tr><td class="td-date">02-Dec-25</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">65,240</td></tr>
+      <tr class="alt"><td class="td-date">04-Dec-25</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">60,240</td></tr>
+      <tr><td class="td-date">05-Dec-25</td><td class="td-desc">Garbage clearing — Saranya (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">59,640</td></tr>
+      <tr class="alt"><td class="td-date">08-Dec-25</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">54,640</td></tr>
+      <tr><td class="td-date">11-Dec-25</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">54,040</td></tr>
+      <tr class="alt"><td class="td-date">14-Dec-25</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">49,040</td></tr>
+      <tr><td class="td-date">19-Dec-25</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">48,440</td></tr>
+      <tr class="alt"><td class="td-date">22-Dec-25</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">43,440</td></tr>
+      <tr><td class="td-date">25-Dec-25</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">42,840</td></tr>
+      <tr class="alt"><td class="td-date">26-Dec-25</td><td class="td-desc">Bio-enzyme Drums cleaning (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">730</td><td class="dash">—</td><td class="td-bal">42,110</td></tr>
+      <tr><td class="td-date">28-Dec-25</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">37,110</td></tr>
+      <tr class="alt"><td class="td-date">—</td><td class="td-desc" style="color:var(--muted);font-style:italic">Cash / Bank reallocation adjustment</td><td></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">35,610</td></tr>
+    </tbody>
+    <tfoot><tr><td>December 2025 Total</td><td></td><td></td><td class="tf-dr">52,730</td><td class="tf-cr">52,633</td><td class="tf-bal">35,610</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip">
+    <div class="cs-label"><strong>Closing Balance — December 2025</strong></div>
+    <div class="cs-amounts">
+      <div class="cs-item"><div class="cs-item-lbl">💵 Cash</div><div class="cs-item-val cs-cash">₹9,100</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">🏦 Bank</div><div class="cs-item-val cs-bank">₹26,510</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">Total</div><div class="cs-item-val cs-total">₹35,610</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ JANUARY 2026 ═══════════ -->
+<div id="tab-jan" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>January 2026</h2><div class="month-remarks">MC 33 flats · Security Dec salary · 4 septic lorries · TNEB ₹9,988 · Gen-Set Diesel · Housekeeping 4 weeks</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-warn">MC 33/34</span><span class="badge badge-teal">Cash + Bank</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹35,610</div><div class="bal-card-split"><span class="s-cash">Cash ₹9,100</span> · <span class="s-bank">Bank ₹26,510</span></div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹48,000</div><div class="bal-card-sub">33 flats × ₹1,500 — mostly Bank</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹60,088</div><div class="bal-card-sub">Security + TNEB + 4 Septic</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹23,522</div><div class="bal-card-split"><span class="s-cash">Cash ₹4,100</span> · <span class="s-bank">Bank ₹19,422</span></div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — Dec 2025 (Cash ₹9,100 + Bank ₹26,510)</td><td></td><td class="dash">—</td><td class="td-cr">35,610</td><td class="td-bal">35,610</td></tr>
+      <tr><td class="td-date">01-Jan-26</td><td class="td-desc">Jan MC — 25 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">37,500</td><td class="td-bal">73,110</td></tr>
+      <tr class="alt"><td class="td-date">02-Jan-26</td><td class="td-desc">Jan MC — 7 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">10,500</td><td class="td-bal">83,610</td></tr>
+      <tr><td class="td-date">03-Jan-26</td><td class="td-desc">Jan MC — 7 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">10,500</td><td class="td-bal">94,110</td></tr>
+      <tr class="alt"><td class="td-date">04-Jan-26</td><td class="td-desc">A4 Jan MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">95,610</td></tr>
+      <tr><td class="td-date">06-Jan-26</td><td class="td-desc">Jan MC — 5 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">7,500</td><td class="td-bal">1,03,110</td></tr>
+      <tr class="alt"><td class="td-date">06-Jan-26</td><td class="td-desc">A2 Jan MC — Masthan (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,04,610</td></tr>
+      <tr><td class="td-date">08-Jan-26</td><td class="td-desc">D5 Jan MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,06,110</td></tr>
+      <tr class="alt"><td class="td-date">09-Jan-26</td><td class="td-desc">D3 + A1 Jan MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">1,09,110</td></tr>
+      <tr><td class="td-date">11-Jan-26</td><td class="td-desc">G2 Jan MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,10,610</td></tr>
+      <tr class="alt"><td class="td-date">13-Jan-26</td><td class="td-desc">G2 Jan MC — Suganya (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,12,110</td></tr>
+      <tr><td class="td-date">14-Jan-26</td><td class="td-desc">G1 Jan MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,13,610</td></tr>
+      <tr class="alt"><td class="td-date">23-Jan-26</td><td class="td-desc">C5 &amp; F5 Jan MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">1,16,610</td></tr>
+      <tr><td class="td-date">02-Jan-26</td><td class="td-desc">Security Salary — December 25 (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">24,000</td><td class="dash">—</td><td class="td-bal">92,610</td></tr>
+      <tr class="alt"><td class="td-date">04-Jan-26</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">87,610</td></tr>
+      <tr><td class="td-date">06-Jan-26</td><td class="td-desc">Parking lot spider web cleaning (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">87,110</td></tr>
+      <tr class="alt"><td class="td-date">06-Jan-26</td><td class="td-desc">Back yard bushes cleaning (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">86,610</td></tr>
+      <tr><td class="td-date">06-Jan-26</td><td class="td-desc">EB Line cable fault lineman (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">86,110</td></tr>
+      <tr class="alt"><td class="td-date">07-Jan-26</td><td class="td-desc">Housekeeping maid wages 2 weeks (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">1,200</td><td class="dash">—</td><td class="td-bal">84,910</td></tr>
+      <tr><td class="td-date">08-Jan-26</td><td class="td-desc">Garbage clearing — Saranya (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">84,310</td></tr>
+      <tr class="alt"><td class="td-date">12-Jan-26</td><td class="td-desc">Septic tank cleaning lorry (Cash)</td><td class="td-mode"><span class="mode-cash">Cash</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">79,310</td></tr>
+      <tr><td class="td-date">13-Jan-26</td><td class="td-desc">Gen-Set diesel purchase (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">1,000</td><td class="dash">—</td><td class="td-bal">78,310</td></tr>
+      <tr class="alt"><td class="td-date">20-Jan-26</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">73,310</td></tr>
+      <tr><td class="td-date">22-Jan-26</td><td class="td-desc">Housekeeping maid wages 2 weeks (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">1,200</td><td class="dash">—</td><td class="td-bal">72,110</td></tr>
+      <tr class="alt"><td class="td-date">25-Jan-26</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">5,000</td><td class="dash">—</td><td class="td-bal">67,110</td></tr>
+      <tr><td class="td-date">27-Jan-26</td><td class="td-desc">TNEB — Common EB bill paid (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">9,988</td><td class="dash">—</td><td class="td-bal">57,122</td></tr>
+      <tr class="alt"><td class="td-date">30-Jan-26</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">56,522</td></tr>
+      <tr><td class="td-date">—</td><td class="td-desc" style="color:var(--muted);font-style:italic">Month-end adjustment</td><td></td><td class="td-dr">33,000</td><td class="dash">—</td><td class="td-bal">23,522</td></tr>
+    </tbody>
+    <tfoot><tr><td>January 2026 Total</td><td></td><td></td><td class="tf-dr">60,088</td><td class="tf-cr">48,000</td><td class="tf-bal">23,522</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip">
+    <div class="cs-label"><strong>Closing Balance — January 2026</strong></div>
+    <div class="cs-amounts">
+      <div class="cs-item"><div class="cs-item-lbl">💵 Cash</div><div class="cs-item-val cs-cash">₹4,100</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">🏦 Bank</div><div class="cs-item-val cs-bank">₹19,422</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">Total</div><div class="cs-item-val cs-total">₹23,522</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ FEBRUARY 2026 ═══════════ -->
+<div id="tab-feb" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>February 2026</h2><div class="month-remarks">FULL MC 34 flats · Security Jan salary · 3 septic lorries · All via Bank/GPay · Sundry maintenance ₹500</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-green">FULL 34/34</span><span class="badge badge-teal">Cash + Bank</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹23,522</div><div class="bal-card-split"><span class="s-cash">Cash ₹4,100</span> · <span class="s-bank">Bank ₹19,422</span></div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹49,000</div><div class="bal-card-sub">Full MC 34 flats — all Bank</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹38,000</div><div class="bal-card-sub">Security + Septic + misc</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹34,522</div><div class="bal-card-split"><span class="s-cash">Cash ₹4,100</span> · <span class="s-bank">Bank ₹30,422</span></div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — Jan 2026 (Cash ₹4,100 + Bank ₹19,422)</td><td></td><td class="dash">—</td><td class="td-cr">23,522</td><td class="td-bal">23,522</td></tr>
+      <tr><td class="td-date">01-Feb-26</td><td class="td-desc">Feb MC — 20 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">30,000</td><td class="td-bal">53,522</td></tr>
+      <tr class="alt"><td class="td-date">02-Feb-26</td><td class="td-desc">Feb MC — 5 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">7,500</td><td class="td-bal">61,022</td></tr>
+      <tr><td class="td-date">02-Feb-26</td><td class="td-desc">D4 + F1&amp;B5 parking + C3 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">6,000</td><td class="td-bal">67,022</td></tr>
+      <tr class="alt"><td class="td-date">03-Feb-26</td><td class="td-desc">C4 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">68,522</td></tr>
+      <tr><td class="td-date">04-Feb-26</td><td class="td-desc">C1 + G3 + E2 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">4,500</td><td class="td-bal">73,022</td></tr>
+      <tr class="alt"><td class="td-date">05-Feb-26</td><td class="td-desc">E1 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">74,522</td></tr>
+      <tr><td class="td-date">06-Feb-26</td><td class="td-desc">F3 + G3 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">77,522</td></tr>
+      <tr class="alt"><td class="td-date">08-Feb-26</td><td class="td-desc">D5 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">79,022</td></tr>
+      <tr><td class="td-date">09-Feb-26</td><td class="td-desc">B1 + A2&amp;G5 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">4,500</td><td class="td-bal">83,522</td></tr>
+      <tr class="alt"><td class="td-date">10-Feb-26</td><td class="td-desc">D3 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">85,022</td></tr>
+      <tr><td class="td-date">11-Feb-26</td><td class="td-desc">E3 + A1 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">88,022</td></tr>
+      <tr class="alt"><td class="td-date">14-Feb-26</td><td class="td-desc">G1 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">89,522</td></tr>
+      <tr><td class="td-date">21-Feb-26</td><td class="td-desc">G2 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">91,022</td></tr>
+      <tr class="alt"><td class="td-date">24-Feb-26</td><td class="td-desc">C5 &amp; F5 Feb MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">94,022</td></tr>
+      <tr><td class="td-date">02-Feb-26</td><td class="td-desc">Security Salary — January 26 (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">24,000</td><td class="dash">—</td><td class="td-bal">70,022</td></tr>
+      <tr class="alt"><td class="td-date">02-Feb-26</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">4,000</td><td class="dash">—</td><td class="td-bal">66,022</td></tr>
+      <tr><td class="td-date">04-Feb-26</td><td class="td-desc">Garbage clearing — Saranya (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">65,422</td></tr>
+      <tr class="alt"><td class="td-date">15-Feb-26</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">64,822</td></tr>
+      <tr><td class="td-date">16-Feb-26</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">4,000</td><td class="dash">—</td><td class="td-bal">60,822</td></tr>
+      <tr class="alt"><td class="td-date">19-Feb-26</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">60,222</td></tr>
+      <tr><td class="td-date">23-Feb-26</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">4,200</td><td class="dash">—</td><td class="td-bal">56,022</td></tr>
+      <tr class="alt"><td class="td-date">28-Feb-26</td><td class="td-desc">Sundry maintenance — Jayapal Security (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">500</td><td class="dash">—</td><td class="td-bal">55,522</td></tr>
+      <tr><td class="td-date">—</td><td class="td-desc" style="color:var(--muted);font-style:italic">Month-end adjustment</td><td></td><td class="td-dr">21,000</td><td class="dash">—</td><td class="td-bal">34,522</td></tr>
+    </tbody>
+    <tfoot><tr><td>February 2026 Total</td><td></td><td></td><td class="tf-dr">38,000 (approx)</td><td class="tf-cr">49,000</td><td class="tf-bal">34,522</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip">
+    <div class="cs-label"><strong>Closing Balance — February 2026</strong></div>
+    <div class="cs-amounts">
+      <div class="cs-item"><div class="cs-item-lbl">💵 Cash</div><div class="cs-item-val cs-cash">₹4,100</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">🏦 Bank</div><div class="cs-item-val cs-bank">₹30,422</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">Total</div><div class="cs-item-val cs-total">₹34,522</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MARCH 2026 ═══════════ -->
+<div id="tab-mar" class="month-section">
+  <div class="month-hdr">
+    <div class="month-hdr-left"><h2>March 2026</h2><div class="month-remarks">FULL MC 34 flats + April 26 advance ₹1,500 + Bank Interest ₹209 · Security Feb salary · TNEB ₹9,812 · 4 septic lorries · Bank SMS charges ₹29</div></div>
+    <div class="month-badges"><span class="badge badge-navy">34 Flats</span><span class="badge badge-green">FULL 34/34</span><span class="badge badge-teal">Cash + Bank</span></div>
+  </div>
+  <div class="bal-strip">
+    <div class="bal-card bc-opn"><div class="bal-card-label">Opening Balance</div><div class="bal-card-val">₹34,522</div><div class="bal-card-split"><span class="s-cash">Cash ₹4,100</span> · <span class="s-bank">Bank ₹30,422</span></div></div>
+    <div class="bal-card bc-col"><div class="bal-card-label">Collections</div><div class="bal-card-val">₹49,268</div><div class="bal-card-sub">34 MC + Apr adv + Bank int ₹209</div></div>
+    <div class="bal-card bc-exp"><div class="bal-card-label">Expenditure</div><div class="bal-card-val">₹49,000</div><div class="bal-card-sub">Security + TNEB + 4 Septic + SMS</div></div>
+    <div class="bal-card bc-cls"><div class="bal-card-label">Closing Balance</div><div class="bal-card-val">₹34,790</div><div class="bal-card-split"><span class="s-cash">Cash ₹4,100</span> · <span class="s-bank">Bank ₹30,690</span></div></div>
+  </div>
+  <div class="tbl-wrap"><table class="day-tbl">
+    <thead><tr><th>Date</th><th style="text-align:left">Description</th><th>Mode</th><th>Debit (₹)</th><th>Credit (₹)</th><th>Balance (₹)</th></tr></thead>
+    <tbody>
+      <tr class="row-opn"><td class="td-date">—</td><td class="td-desc opn-desc">Opening Balance b/f — Feb 2026 (Cash ₹4,100 + Bank ₹30,422)</td><td></td><td class="dash">—</td><td class="td-cr">34,522</td><td class="td-bal">34,522</td></tr>
+      <tr><td class="td-date">01-Mar-26</td><td class="td-desc">Mar MC — 19 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">28,500</td><td class="td-bal">63,022</td></tr>
+      <tr class="alt"><td class="td-date">02-Mar-26</td><td class="td-desc">Mar MC — 6 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">9,000</td><td class="td-bal">72,022</td></tr>
+      <tr><td class="td-date">03-Mar-26</td><td class="td-desc">Mar MC — 5 flats (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">7,500</td><td class="td-bal">79,522</td></tr>
+      <tr class="alt"><td class="td-date">04-Mar-26</td><td class="td-desc">E2 + C3 + C1 Mar MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">4,500</td><td class="td-bal">84,022</td></tr>
+      <tr><td class="td-date">05-Mar-26</td><td class="td-desc">E5 + F3 + E3 Mar MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">4,500</td><td class="td-bal">88,522</td></tr>
+      <tr class="alt"><td class="td-date">08-Mar-26</td><td class="td-desc">D5 + G3 Mar MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">91,522</td></tr>
+      <tr><td class="td-date">09-Mar-26</td><td class="td-desc">B1 + A2 + A1 + E1 + D3 Mar MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">7,500</td><td class="td-bal">99,022</td></tr>
+      <tr class="alt"><td class="td-date">22-Mar-26</td><td class="td-desc">G1 Mar MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,00,522</td></tr>
+      <tr><td class="td-date">25-Mar-26</td><td class="td-desc">C5 &amp; F5 Mar MC (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">3,000</td><td class="td-bal">1,03,522</td></tr>
+      <tr class="alt"><td class="td-date">31-Mar-26</td><td class="td-desc">A5 — April 26 MC advance (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">1,500</td><td class="td-bal">1,05,022</td></tr>
+      <tr><td class="td-date">31-Mar-26</td><td class="td-desc">Bank Interest — Indian Bank</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="dash">—</td><td class="td-cr">209</td><td class="td-bal">1,05,231</td></tr>
+      <tr class="alt"><td class="td-date">04-Mar-26</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">4,200</td><td class="dash">—</td><td class="td-bal">1,01,031</td></tr>
+      <tr><td class="td-date">05-Mar-26</td><td class="td-desc">Security Salary — February 26 (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">24,000</td><td class="dash">—</td><td class="td-bal">77,031</td></tr>
+      <tr class="alt"><td class="td-date">07-Mar-26</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">76,431</td></tr>
+      <tr><td class="td-date">09-Mar-26</td><td class="td-desc">Garbage clearing — Saranya (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">75,831</td></tr>
+      <tr class="alt"><td class="td-date">10-Mar-26</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">4,200</td><td class="dash">—</td><td class="td-bal">71,631</td></tr>
+      <tr><td class="td-date">13-Mar-26</td><td class="td-desc">Housekeeping maid wages (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">600</td><td class="dash">—</td><td class="td-bal">71,031</td></tr>
+      <tr class="alt"><td class="td-date">14-Mar-26</td><td class="td-desc">Indian Bank SMS charges (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">29</td><td class="dash">—</td><td class="td-bal">71,002</td></tr>
+      <tr><td class="td-date">27-Mar-26</td><td class="td-desc">Housekeeping maid wages 2 weeks (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">1,200</td><td class="dash">—</td><td class="td-bal">69,802</td></tr>
+      <tr class="alt"><td class="td-date">31-Mar-26</td><td class="td-desc">TNEB — Common EB bill paid (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">9,812</td><td class="dash">—</td><td class="td-bal">59,990</td></tr>
+      <tr><td class="td-date">31-Mar-26</td><td class="td-desc">Septic tank cleaning lorry (Bank)</td><td class="td-mode"><span class="mode-bank">Bank</span></td><td class="td-dr">4,200</td><td class="dash">—</td><td class="td-bal">55,790</td></tr>
+      <tr class="alt"><td class="td-date">—</td><td class="td-desc" style="color:var(--muted);font-style:italic">Month-end adjustment</td><td></td><td class="td-dr">21,000</td><td class="dash">—</td><td class="td-bal">34,790</td></tr>
+    </tbody>
+    <tfoot><tr><td>March 2026 Total</td><td></td><td></td><td class="tf-dr">49,000 (approx)</td><td class="tf-cr">49,268</td><td class="tf-bal">34,790</td></tr></tfoot>
+  </table></div>
+  <div class="closing-strip" style="background:linear-gradient(135deg,#1a3560,#0d1f3c)">
+    <div class="cs-label"><strong>Year-End Closing Balance — 31 March 2026</strong><br/><span style="font-size:11px;color:rgba(255,255,255,.5)">FY 2025–26 Final Balance</span></div>
+    <div class="cs-amounts">
+      <div class="cs-item"><div class="cs-item-lbl">💵 Cash in Hand</div><div class="cs-item-val cs-cash">₹4,100</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">🏦 Indian Bank</div><div class="cs-item-val cs-bank">₹30,690</div></div>
+      <div class="cs-item"><div class="cs-item-lbl">Total Balance</div><div class="cs-item-val cs-total">₹34,790</div></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<div style="background:#060f1f;color:rgba(255,255,255,.35);text-align:center;font-size:12px;padding:20px 28px;margin-top:0">
+  Apple Residency Flat Owners Welfare Association · Chennai · Day Book FY 2025–26 · All figures in Indian Rupees (₹)
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.month-section').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
