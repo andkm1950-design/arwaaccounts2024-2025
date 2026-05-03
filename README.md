@@ -7,7 +7,7 @@
 
 ## About
 
-This website publishes the financial accounts of **Apple Residency Flat Owners Welfare Association, Chennai** for the financial year **September 2024 to March 2025**.
+This website publishes the financial accounts of **Apple Residency Flat Owners Welfare Association, Tiruchirapalli** for the financial year **September 2024 to March 2025**.
 
 All 34 flat owners can view monthly collections, expenditure, and closing balances in a transparent and easy-to-read format.
 
